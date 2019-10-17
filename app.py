@@ -9,6 +9,7 @@ import time
 app = Flask(__name__)
 
 TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+TEST_DATA_PATH = '/Users/huizh/Documents/Chronos-2/Chronos/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -86,14 +87,31 @@ def update():
 @app.route('/timeline.html')
 def timeline():
     data = load_test_data()
-    print("Debug")
-    print(data.get('eta')[0][1])
     date_1 = data.get('eta')[0][1].replace(" ","")
     date_2 = data.get('eta')[1][1].replace(" ","")
     date_3 = data.get('eta')[2][1].replace(" ","")
     date_4 = data.get('eta')[3][1].replace(" ","")
 
     return render_template('timeline.html'
+                           , date1=date_1
+                           , date2=date_2
+                           , date3=date_3
+                           , date4=date_4
+                           , remaindate1=cal_remain_days(date_1)
+                           , remaindate2=cal_remain_days(date_2)
+                           , remaindate3=cal_remain_days(date_3)
+                           , remaindate4=cal_remain_days(date_4)
+                           )
+
+@app.route('/devtimeline.html')
+def devtimeline():
+    data = load_test_data()
+    date_1 = data.get('eta')[0][1].replace(" ","")
+    date_2 = data.get('eta')[1][1].replace(" ","")
+    date_3 = data.get('eta')[2][1].replace(" ","")
+    date_4 = data.get('eta')[3][1].replace(" ","")
+
+    return render_template('devtimeline.html'
                            , date1=date_1
                            , date2=date_2
                            , date3=date_3
@@ -131,7 +149,13 @@ def dump_test_data(data):
 def cal_remain_days(end_date):
     tmp1 = time.strptime(end_date, "%Y-%m-%d")
     end = datetime.datetime(tmp1[0], tmp1[1], tmp1[2])
-    print(end-datetime.datetime.now())
+    #print(end-datetime.datetime.now())
+    diff = int(str(end-datetime.datetime.now()).split(" ")[0])
+    print(diff)
+    if diff<15:
+        return "Risk: Only remain " + str(end-datetime.datetime.now()).split(",")[0]
+    else:
+        return "Remain " + str(end-datetime.datetime.now()).split(",")[0]
     return str(end-datetime.datetime.now()).split(",")[0]
 
 if __name__ == '__main__':

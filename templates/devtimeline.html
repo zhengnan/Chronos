@@ -46,8 +46,8 @@
       <li class="cd-h-timeline__event cd-h-timeline__event--selected text-component">
         <div class="cd-h-timeline__event-content container">
           <h3 class="cd-h-timeline__event-title">Requirement Validation</h3>
-          <span id="left-time1" style="float:right;color:blue;display:none">{{ remaindate1 }}</span>
-          <span id="done-1" style="float:right;color:green;display:block">Done</span>
+          <span id="left-time1" style="float:right;color:blue">{{ remaindate1 }}</span>
+          <span id="done-1" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date1 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
             Make clear of the business requirements form BRD. List the all dependencies from other teams into below form.
@@ -55,28 +55,45 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
 
-              <!--<div id="form-div1" class="form-group">
+              <div id="form-div1" class="form-group">
                 Business SIM  : <input id="business-sim" name="business-" type="text" size="55" class="form-control" placeholder="Business additional requirements SIM" data-bind="value: business-requirement" data-val="true"
                                        data-val-required="business-requirement is required">
-                &lt;!&ndash;data-val="true" data-val-required="name is required"&ndash;&gt;
+                <!--data-val="true" data-val-required="name is required"-->
               </div>
               <div id="form-div2" class="form-group">
                 Technology SIM: <input id="tech-sim" name="tech-requirement" type="text" size="55" class="form-control" placeholder="Tech additional requirements SIM" data-bind="value: tech-requirement" data-val="true"
                                        data-val-required="tech-requirement is required">
-              </div>-->
+              </div>
 
               <div class="row">
-                <div id="text-div1" class="text-div"  style="display:block">
+                <div id="text-div1" class="text-div"  style="display:none">
                   <br> Business SIM: </br>
-                  <a href="https://issues.amazon.com/FEEPID-8">FEEPID-8</a>
+                </div>
+                <div id="business-requirement-result" class="col-md-6 col-md-offset-3" style="display:none">
+
+                  <label>Business SIM</label> : <span data-bind="text: Name"></span>
                 </div>
               </div>
               <div class="row">
-                <div id="text-div2" class="text-div"  style="display:block">
+                <div id="text-div2" class="text-div"  style="display:none">
                   <br> Technology SIM: </br>
-                  <a href="https://issues.amazon.com/issues/FeeIntake-13">FeeIntake-13</a>
+                </div>
+                <div id="tech-requirement-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Technology SIM</label> : <span data-bind="text: Email"></span>
                 </div>
               </div>
+
+              <div id="done-div" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone()">Done</button>
+              </div>
+              <div id="redo-div" align="center" style="position:relative;top:0px;height: 20px;display:none;float:left;">
+                <button class="blue" onclick="ckiredo()" >Redo</button>
+              </div>
+
+              <div id="next-div" align="center" style="position:relative;top:0px;height: 20px;display:none;">
+                <button class="blue" onclick="ckinext()" >Next</button>
+              </div>
+
 
 
               <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
@@ -160,19 +177,49 @@
       <li class="cd-h-timeline__event text-component">
         <div class="cd-h-timeline__event-content container">
           <h2 class="cd-h-timeline__event-title">Developing</h2>
-          <span id="left-time2" style="float:right;color:blue;display:none">{{ remaindate2 }}</span>
-          <span id="done-2" style="float:right;color:green;display:block">Done</span>
+          <span id="left-time2" style="float:right;color:blue">{{ remaindate2 }}</span>
+          <span id="done-2" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date2 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
             Fee project developing phase, developer need to complete each part listed below if needed. Update each step process, and feel free to complete it if CR is reviewed.
           </p>
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
-
+              <div id="datakey-div" class="form-group">
+                <label>Data Key Change Step   </label>  -  <span data-bind="text: chosenes"></span>
+                <select id="datakey" name="develop-datakey" class="form-control">
+                  <option value="done">Done</option>
+                  <option value="no-need">Not need</option>
+                  <option value="blocked">Blocked</option>
+                </select>
+              </div>
+              <div id="rate-div" class="form-group">
+                <label>Fee Rate Change Step   </label>   -  <span data-bind="text: chosenes"></span>
+                <select id="rate" name="develop-rate" class="form-control">
+                  <option value="done">Done</option>
+                  <option value="no-need">Not need</option>
+                  <option value="blocked">Blocked</option>
+                </select>
+              </div>
+              <div id="test-div" class="form-group">
+                <label>Rate Unit Test Step  </label>  -  <span data-bind="text: chosenes"></span>
+                <select id="test" name="unit-test" class="form-control">
+                  <option value="done">Done</option>
+                  <option value="no-need">Not need</option>
+                  <option value="blocked">Blocked</option>
+                </select>
+              </div>
+              <div id="cr-div" class="form-group">
+                <label>CR Link   </label>  : <span data-bind="text: chosenes"></span>
+                <div class="form-group">
+                  <input id="cr" name="cr" type="text" size="55" class="form-control" placeholder="Fill in CR Link" data-bind="value: tech-requirement" data-val="true"
+                         data-val-required="tech-requirement is required">
+                </div>
+              </div>
 
               <div class="row">
-                <div id="datakey-text" class="text-div"  style="display:block">
-                  <br> Data Key Change Step: Done</br>
+                <div id="datakey-text" class="text-div"  style="display:none">
+                  <br> Data Key Change Step: </br>
                 </div>
                 <div id="datakey-result" class="col-md-6 col-md-offset-3" style="display:none">
                   <label>Data Key Change Step </label> : <span data-bind="text: Name"></span>
@@ -180,8 +227,8 @@
               </div>
 
               <div class="row">
-                <div id="rate-text" class="text-div"  style="display:block">
-                  <br> Fee Rate Change Step: Done</br>
+                <div id="rate-text" class="text-div"  style="display:none">
+                  <br> Fee Rate Change Step: </br>
                 </div>
                 <div id="rate-result" class="col-md-6 col-md-offset-3" style="display:none">
                   <label>Fee Rate Change Step - </label> : <span data-bind="text: Name"></span>
@@ -189,8 +236,8 @@
               </div>
 
               <div class="row">
-                <div id="test-text" class="text-div"  style="display:block">
-                  <br> Rate Unit Test Step: Done</br>
+                <div id="test-text" class="text-div"  style="display:none">
+                  <br> Rate Unit Test Step: </br>
                 </div>
                 <div id="test-result" class="col-md-6 col-md-offset-3" style="display:none">
                   <label>Rate Unit Test Step</label> : <span data-bind="text: Name"></span>
@@ -198,15 +245,24 @@
               </div>
 
               <div class="row">
-                <div id="cr-text" class="text-div"  style="display:block">
+                <div id="cr-text" class="text-div"  style="display:none">
                   <br> CR: </br>
-                  <a href="https://code.amazon.com/reviews/CR-8786081">CR-8786081</a>
                 </div>
                 <div id="cr-result" class="col-md-6 col-md-offset-3" style="display:none">
                   <label>CR</label> : <span data-bind="text: Name"></span>
                 </div>
               </div>
 
+              <div id="done-div-2" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone2()">Done</button>
+              </div>
+              <div id="redo-div-2" align="center" style="position:relative;top:0px;height: 20px;display:none;float:left;">
+                <button class="blue" onclick="ckiredo2()" >Redo</button>
+              </div>
+
+              <div id="next-div-2" align="center" style="position:relative;top:0px;height: 20px;display:none;">
+                <button class="blue" onclick="ckinext2()" >Next</button>
+              </div>
 
 
               <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
@@ -293,7 +349,7 @@
       <li class="cd-h-timeline__event text-component">
         <div class="cd-h-timeline__event-content container">
           <h2 class="cd-h-timeline__event-title">Integration Test</h2>
-          <span id="left-time3" style="float:right;color:red">{{ remaindate3 }}</span>
+          <span id="left-time3" style="float:right;color:blue">{{ remaindate3 }}</span>
           <span id="done-3" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date3 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
@@ -301,15 +357,41 @@
           </p>
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
-              <div class="row">
-                <div id="test-3" class="text-div"  style="display:block;color:red">
-                  <br> Run Integration Unit Test: Not Start</br>
+              <div class="container">
+                <div  id="test-div1" class="page-header">
+                  <h5>Run Test base on Integration Test File in Test Pkg:</h5>
+                </div>
+                <div  id="test-div-s" class="page-header" style="display:none">
+                  <h5>Test Run Successfully!</h5>
+                </div>
+                <div id="test-div2" class="row" style="padding-top:10px;">
+                  <button id="uploadBtn" onclick="runtest()" >Run Test</button>
+
+                  <div class="col-xs-10">
+                    <div id="progressOuter" class="progress progress-striped active" style="display:none;">
+                      <div id="progressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
+                <div class="row" style="padding-top:10px;">
+                  <div class="col-xs-10">
+                    <div id="msgBox">
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div id="urge-div3" align="center" style="position:relative;top:0px;height: 20px;display:block;">
-                <button class="blue" onclick="urge()">Urge</button>
+              <div id="done-div3" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone3()">Done</button>
+              </div>
+              <div id="redo-div3" align="center" style="position:relative;top:0px;height: 20px;display:none;float:left;">
+                <button class="blue" onclick="ckiredo3()" >Redo</button>
+              </div>
+
+              <div id="next-div3" align="center" style="position:relative;top:0px;height: 20px;display:none;">
+                <button class="blue" onclick="ckinext3()" >Next</button>
               </div>
 
 
@@ -357,10 +439,6 @@
                     if(document.getElementById("left-time3").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time3").style.color = "Red"
                     }
-                    function urge(){
-                       alert("Email Sent to Dev Team!")
-                    }
-
                     //document.getElementById("left-time3").innerHTML=getLeftTime("2019-11-22 00:00:00");
 
                 </script>
@@ -382,18 +460,52 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
 
+              <div id="date-div" class="container">
+                <label>Deploy Date   </label>  : <span data-bind="text: chosenes"></span>
+                <input id="date" type="text" name="birthday" value="10/15/2019" />
+                <div id="mcm-div" class="form-group">
+                  <label>MCM   </label>  : <span data-bind="text: chosenes"></span>
+                  <input id="mcm" name="mcm" type="text" size="50" class="form-control" placeholder="MCM Link" data-bind="value: business-requirement" data-val="true"
+                         data-val-required="business-requirement is required">
+                </div>
+              </div>
+
+              <script>
+                $(function() {
+                  $('input[name="birthday"]').daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    minYear: 1901,
+                    maxYear: parseInt(moment().format('YYYY'),10)
+                  }, function(start, end, label) {
+                    var years = moment().diff(start, 'years');
+                    alert("You are " + years + " years old!");
+                  });
+                });
+                </script>
 
 
 
               <div class="row">
-                <div id="mcm-4" class="text-div"  style="display:block;color:red">
-                  <br> MCM Process: Not Start</br>
+                <div id="date-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Deploy Date</label> : <span data-bind="text: Email"></span>
                 </div>
-
               </div>
 
-              <div id="urge-div4" align="center" style="position:relative;top:0px;height: 20px;display:block;">
-                <button class="blue"  onclick="urge()">Urge</button>
+              <div class="row">
+                <div id="mcm-text" class="text-div"  style="display:none">
+                  <br> MCM: </br>
+                </div>
+                <div id="mcm-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>MCM Link</label> : <span data-bind="text: Email"></span>
+                </div>
+              </div>
+
+              <div id="done-div4" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone4()">Done</button>
+              </div>
+              <div id="redo-div4" align="center" style="position:relative;top:0px;height: 20px;display:none">
+                <button class="blue" onclick="ckiredo4()" >Redo</button>
               </div>
 
 
