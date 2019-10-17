@@ -59,7 +59,6 @@
             <div class="cd-timeline-content">
                 <h2>Select Other DataKey</h2>
                 <div class="commentable-section">
-s
                     <select id="all_fee_sodr" multiple="multiple" disabled class="select-box" style="width:300px;height:50px">
                         {% for datakey in datakeyall %}
                         <option>{{datakey}}</option>
@@ -79,6 +78,19 @@ s
                 <h2>Rate Table</h2>
                 <div id="div_rate_table">
                     <table id="rate_table" border="1">
+                        <tr>
+                        {% for title in rateTitle %}
+                            <th>{{title}}</th>
+                        {% endfor %}
+                        </tr>
+
+                        {% for raterow in rate %}
+                        <tr>
+                            {% for rateitem in raterow %}
+                                <td>{{rateitem}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
                     </table>
                 </div>
                 <p data-section-id="003" class="commentable-section">
@@ -132,6 +144,13 @@ s
                 <h2>ETA Desc</h2>
                 <div id="div_eta_table">
                     <table id="eta_table" border="1">
+                        {% for trrow in eta %}
+                            <tr>
+                                {% for tditem in trrow %}
+                                  <td>{{tditem}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div> <!-- cd-timeline-content -->

@@ -154,14 +154,14 @@ function show() {
 
         var total_json = {};
         var rate_title = getrateTitle();
-        total_json.rate=rate_json;
+        total_json.rate=rate_json == null ? "[]" : rate_json;
         total_json.rateTitle = rate_title;
-        total_json.feeType=feetype;
-        total_json.datakey=fee_specific_sodrs;
-        total_json.datakeyall=all_fee_sodrs;
-        total_json.changeDesc=change_desc;
+        total_json.feeType=feetype == null?"":feetype;
+        total_json.datakey=fee_specific_sodrs==null?"":fee_specific_sodrs;
+        total_json.datakeyall=all_fee_sodrs==null?"":all_fee_sodrs;
+        total_json.changeDesc=change_desc==null?"":change_desc;
         total_json.profitability=profitability;
-        total_json.eta=eta_json;
+        total_json.eta=eta_json==null?"[]":eta_json;
         total_json.etaTime=endTime;
         total_json.profitability1=profitability1;
         total_json.profitability2=profitability2;
@@ -175,10 +175,10 @@ function show() {
            dataType: 'json',
            data: JSON.stringify(total_json),
            success: function (data) {
-
          }
        });
- window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
+        window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
+
 
     });
 
@@ -230,10 +230,10 @@ function show() {
 
         function getrateTitle(){
 
-            var actual_rates = [];
+            var actual_rate = [];
 
             $("#rate_table tr.title").each(function() {
-                var actual_rate = [];
+//                var actual_rate = [];
                 $.each(this.cells, function() {
                     $this = $(this);
                     //alert($this.html());
@@ -246,10 +246,10 @@ function show() {
                         //alert($this.html());
                     }
                 });
-                actual_rates.push(actual_rate);
+//                actual_rates.push(actual_rate);
             });
 
-            return JSON.stringify(actual_rates);
+            return JSON.stringify(actual_rate);
         };
 
     function getEtaJson(){
@@ -259,7 +259,11 @@ function show() {
         var eta_item
         var step = tableObj.rows[i].cells[0].innerText;
         var eta = tableObj.rows[i].cells[1].getElementsByTagName("input")[0].value;
-        eta_arrays.push({"step":step,"eta":eta});
+                var eta_item =[];
+                eta_item.push(step);
+                eta_item.push(eta);
+        //        eta_arrays.push({"step":step,"eta":eta});
+                eta_arrays.push(eta_item);
     }
     return JSON.stringify(eta_arrays);
 
