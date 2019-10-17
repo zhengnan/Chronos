@@ -13,7 +13,9 @@
 		<div class="topBanner-approvers">
 			<ul id="approverList">
 				<li class="listTitle">Approvers</li>
-				<li class="approver"> <span class="name">{{ApproverName}}</span> &nbsp; (<span class="{{ApproveCssClass}}">{{ApproveStatus}}</span>) </li>
+				{% for approveItem in approveItems %}
+				<li class="approver"> <span class="name">{{approveItem.approver}}</span> &nbsp; (<span class="{{approveItem.cssClass}}">{{approveItem.status}}</span>) </li>
+				{% endfor %}
 			</ul>
 		</div>
 		<div class=clearFloat"></div>

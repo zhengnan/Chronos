@@ -27,13 +27,11 @@ def brdp_detail():
     section6 = data.get('profitability2')
     section7 = data.get('etaTime')
 
-    oneApproveItem = get_parsed_approver_item()
+    approveItems = get_parsed_approver_items()
 
     return render_template('brddetailp.html', section1=section1, rateTitle=rateTitle, section2=section2, section3=section3
         , section4=section4, section5=section5, section6=section6, section7=section7
-        , ApproverName=oneApproveItem['_approverName']
-        , ApproveStatus=oneApproveItem['status']
-        , ApproveCssClass=oneApproveItem['cssClass'])
+        , approveItems=approveItems)
 
 @app.route('/brddetailn.html')
 def brdn_detail():
@@ -43,12 +41,10 @@ def brdn_detail():
     section3 = data.get('profitability')
     section4 = data.get('eta')
 
-    oneApproveItem = get_parsed_approver_item()
+    approveItems = get_parsed_approver_items()
 
     return render_template('brddetailn.html', section1=section1, section2=section2, section3=section3, section4=section4
-        , ApproverName=oneApproveItem['_approverName']
-        , ApproveStatus=oneApproveItem['status']
-        , ApproveCssClass=oneApproveItem['cssClass'])
+        , approveItems=approveItems)
 
 @app.route('/hello', methods=['POST', 'GET'])
 def hello():
@@ -190,20 +186,23 @@ def cal_remain_days(end_date):
         return "Remain " + str(end-datetime.datetime.now()).split(",")[0]
     return str(end-datetime.datetime.now()).split(",")[0]
 
-def get_parsed_approver_item():
+def get_parsed_approver_items():
+    outputItems = list()
+
     approveData = load_approve_data()
     # print('in brdn_detail(). approveData: ', approveData)
 
-    oneApproverName = ''
     dataKeys = approveData.keys()
     # print('approveData.keys(): ', dataKeys)
     for oneKey in dataKeys:
-        oneApproverName = oneKey
-        break
+        loadedItem = approveData[oneKey]
+        outputItem = dict()
+        outputItem['approver'] = oneKey
+        outputItem['status'] = loadedItem['status']
+        outputItem['cssClass'] = loadedItem['cssClass']
+        outputItems.append(outputItem)
 
-    oneApproveItem = approveData[oneApproverName]
-    oneApproveItem ['_approverName'] = oneApproverName
-    return oneApproveItem
+    return outputItems
 
 if __name__ == '__main__':
     # app.run(host, port, debug, options)
