@@ -199,6 +199,20 @@ main {
 	cursor: default;
 }
 
+.content__button {
+	font-family: "Playfair Display", serif;
+	font-size: 4vw;
+	font-weight: normal;
+	mix-blend-mode: screen;
+	line-height: 0.7;
+	text-transform: lowercase;
+	margin: 0;
+	color: var(--color-title);
+	z-index: 199;
+	cursor: default;
+	border-radius:8px 8px 8px 8px;
+}
+
 .content__tagline {
 	color: var(--color-tagline);
 	margin: 1rem 0 0 0;
@@ -321,6 +335,7 @@ main {
 	transition: color 0.1s;
 	margin: 0.25rem 0;
 	display: block;
+	float: left;
 }
 
 .sidemenu__item-inner {
