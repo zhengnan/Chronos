@@ -1,17 +1,45 @@
 function show() {
-	var feeTypes = {
-		"StorageBilling": {
-			"SODR": {
-				"sortable": ["true", "false"],
-				"hazmat": ["true", "false"]
-			}
-		},
-		"FBAOverageFee": {
-			"SODR": {
-				"panEU": ["true", "false"]
-			}
-		}
-	};
+    var feeTypes = {
+        "StorageBilling-EU": {
+            "SODR": {
+                "IsItemGroupSortable": ["true", "false"],
+                "OneDayCore": ["true", "false"],
+                "IsApparelOrShoes": ["true", "false"]
+            }
+        },
+        "OnAmazonUnitFulfillmentFee-EU": {
+            "SODR": {
+                "panEU": ["true", "false"],
+                "Domestic": ["true", "false"],
+                "CEE": ["true", "false"]
+            }
+        },
+        "OnAmazonUnitFulfillmentFee-NA": {
+            "SODR": {
+                "Hazmat": ["true", "false"],
+                "OnsiteGround": ["true", "false"],
+                "OnsiteSpecialOversize": ["true", "false"]
+            }
+        },
+        "LongTermStorageFee-IN": {
+            "SODR": {
+                "InventoryAgeGroup": ["ShortTimeRange", "LongTimeRange"],
+                "IsSellerFlex": ["true", "false"]
+            }
+        },
+        "FBAInboundDefectFee-IN": {
+            "SODR": {
+                "InboundDefectType": ["LABEL_ISSUE", "ITEM_LABEL_UNSCANNABLE", "ITEM_LABEL_MISSING", "LABEL_ISSUE"],
+                "InboundDefectTier": ["FirstInfraction", "NonComplianceFee"]
+            }
+        },
+        "RemovalFee-IN": {
+            "SODR": {
+                "IsItemPackageHeavyBulky": ["true", "false"],
+                "RemovalOption": ["Pickup", "ExpeditedShipping", "StandardShipping"]
+            }
+        }
+    };
 
 	$.each(feeTypes, function(feeTypeName, value ) {
    		var select_option = "<option value='" + feeTypeName + "'>" + feeTypeName + "</option>";
@@ -24,10 +52,10 @@ function show() {
         var feeTypeName = $('#fee_type').val();
 
         $.each(feeTypes[feeTypeName].SODR, function(datakeyName, value ) {
-	   		var select_option = "<option value='" + datakeyName + "'>" + datakeyName + "</option>";
-	   		$('#fee_specific_sodr').append(select_option);
-		});
-		$.each(feeTypes, function(feeTypeName, feeTypeVal ){
+            var select_option = "<option value='" + datakeyName + "'>" + datakeyName + "</option>";
+            $('#fee_specific_sodr').append(select_option);
+        });
+        $.each(feeTypes, function(feeTypeName, feeTypeVal ){
               var selectedFeeTypeName = $('#fee_type').val();
               if(selectedFeeTypeName != feeTypeName) {
                 $.each(feeTypeVal.SODR, function(datakeyName, value ) {
