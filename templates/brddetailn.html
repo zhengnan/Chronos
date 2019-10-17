@@ -6,8 +6,17 @@
         <link rel="stylesheet" href="static/BRDDetails/support/css/basics.css" />
     </head>
     <body>
-	<header>
-		<h1>BRD Detail Information</h1>
+	<header class="topBanner">
+		<div class="topBanner-title">
+			<h1>BRD Detail Information</h1>
+		</div>
+		<div class="topBanner-approvers">
+			<ul id="approverList">
+				<li class="listTitle">Approvers</li>
+				<li class="approver"> <span class="name">{{ApproverName}}</span> &nbsp; (<span class="{{ApproveCssClass}}">{{ApproveStatus}}</span>) </li>
+			</ul>
+		</div>
+		<div class=clearFloat"></div>
 	</header>
 
 	<section id="cd-timeline" class="cd-container">

@@ -1,7 +1,8 @@
 function onBRDPageApproveButtonClicked() {
-    var data = {
-        'Zheng, Nan': 'Approved'
-    }
+	var approver = 'Zheng, Nan';
+    var data = {};
+    data[approver] = 'Approved';
+
     $.ajax(
         {
             type: 'GET',
