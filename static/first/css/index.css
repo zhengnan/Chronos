@@ -63,7 +63,7 @@ header {
   height: 200px;
   line-height: 200px;
   text-align: center;
-  background: #303e49;
+  background: #f0ca45;
 }
 header h1 {
   color: #ffffff;
@@ -72,12 +72,13 @@ header h1 {
 }
 @media only screen and (min-width: 1170px) {
   header {
-    height: 300px;
-    line-height: 300px;
+    height: 200px;
+    line-height: 200px;
   }
   header h1 {
-    font-size: 24px;
-    font-size: 1.5rem;
+    font-size: 48px;
+    font-size: 2.48832em;
+    font-family: 'Playfair Display', serif;
   }
 }
 
