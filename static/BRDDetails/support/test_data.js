@@ -35,7 +35,7 @@ var oneComment = [
         "authorName": "nanzhen",
         "authorId": 1,
         "authorUrl": "http://en.wikipedia.org/wiki/Kit_Harington",
-        "comment": "Some issues.",
+        "comment": "Good idea.",
         "replies": [
         ]
       }
@@ -53,7 +53,7 @@ var twoComments = [
         "authorName": "nanzhen",
         "authorId": 1,
         "authorUrl": "http://en.wikipedia.org/wiki/Kit_Harington",
-        "comment": "Some issues.",
+        "comment": "Good idea.",
         "replies": [
           {
             "id" : 100,
@@ -61,7 +61,7 @@ var twoComments = [
             "authorName": "PM",
             "authorId": 1,
             "authorUrl": "http://en.wikipedia.org/wiki/Kit_Harington",
-            "comment": "Resolved.",
+            "comment": "Thank you.",
             "parentId": 88
           }
         ]
