@@ -168,7 +168,8 @@ function show() {
 
         console.log(JSON.stringify(total_json));
         var subject = '[] ' + feetype + " Creation";
-        sendMail(subject);
+        var content = JSON.stringify(total_json);
+        sendMail(subject,content;
         $.ajax({
            url: '/first',
            type: 'GET',
@@ -273,14 +274,14 @@ function show() {
 
 
     function sendMail(subject, message){
-	var subject = "[IR2] Request to approve a fee program launch request";
-	var message = "Hi Nan,
-	There is an program launch approval request pending your approval.
-	Please review it at this page and give your opnion at: http://127.0.0.1:5000/brddetailn.html
-
-	Thanks,
-	Fee Program Launcher Website
-	";
+//	var subject = "[IR2] Request to approve a fee program launch request";
+//	var message = "Hi Nan";
+//	There is an program launch approval request pending your approval.
+//	Please review it at this page and give your opnion at: http://127.0.0.1:5000/brddetailn.html
+//
+//	Thanks,
+//	Fee Program Launcher Website
+//	";
 
 
     var data_js = {
