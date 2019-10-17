@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <link rel="stylesheet" href="static/assets/css/style.css">
+  <link rel="stylesheet" href="static/assets/css/mawbutton.css">
+  <link rel="stylesheet" href="static/assets/css/multi-step-form.css" type="text/css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <title>Horizontal Timeline | CodyHouse</title>
+</head>
+
+<body>
+<header>
+  <h1 class="header-title">Launch Process</h1>
+</header>
+<section class="cd-h-timeline js-cd-h-timeline margin-bottom-md">
+  <!-- <h2 class="text-center margin-top-md margin-bottom-xl cd-h-timeline__event-title"> Project Progress </h2>-->
+  <!--<a href="http://localhost/~huizh/horizontal-timeline-master/" class="cd-read-more">Read more</a>-->
+  <div class="cd-h-timeline__container container">
+    <div class="cd-h-timeline__dates">
+      <div class="cd-h-timeline__line">
+        <ol>
+          <li><a id="date-point-1" href="#0" data-date="27/10/2019" class="cd-h-timeline__date cd-h-timeline__date--selected">Requirement Validation<br/> {{ date1 }}</a></li>
+          <li><a id="date-point-2" href="#0" data-date="05/11/2019" class="cd-h-timeline__date">Develop<br/>  {{ date2 }}</a></li>
+          <li><a id="date-point-3" href="#0" data-date="22/11/2019" class="cd-h-timeline__date">Test<br/>  {{ date3 }}</a></li>
+          <li><a id="date-point-4" href="#0" data-date="30/11/2019" class="cd-h-timeline__date">Deployment<br/>  {{ date4 }}</a></li>
+        </ol>
+
+        <span class="cd-h-timeline__filling-line" aria-hidden="true"></span>
+      </div> <!-- .cd-h-timeline__line -->
+    </div> <!-- .cd-h-timeline__dates -->
+
+    <ul>
+      <li><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--prev cd-h-timeline__navigation--inactive">Prev</a></li>
+      <li><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--next">Next</a></li>
+    </ul>
+  </div> <!-- .cd-h-timeline__container -->
+
+  <div class="cd-h-timeline__events">
+    <ol>
+      <li class="cd-h-timeline__event cd-h-timeline__event--selected text-component">
+        <div class="cd-h-timeline__event-content container">
+          <h3 class="cd-h-timeline__event-title">Requirement Validation</h3>
+          <span id="left-time1" style="float:right;color:red">Remain {{ remaindate1 }}</span>
+          <span id="done-1" style="float:right;color:green;display:none">Done</span>
+          <em class="cd-h-timeline__event-date">ETA: {{ date1 }}</em>
+          <p class="cd-h-timeline__event-description color-contrast-medium">
+            Make clear of the business requirements form BRD. List the all dependencies from other teams into below form.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+              <div id="form-div1" class="form-group">
+                Business SIM  : <input id="business-sim" name="business-" type="text" size="55" class="form-control" placeholder="Business additional requirements SIM" data-bind="value: business-requirement" data-val="true"
+                                       data-val-required="business-requirement is required">
+                <!--data-val="true" data-val-required="name is required"-->
+              </div>
+              <div id="form-div2" class="form-group">
+                Technology SIM: <input id="tech-sim" name="tech-requirement" type="text" size="55" class="form-control" placeholder="Tech additional requirements SIM" data-bind="value: tech-requirement" data-val="true"
+                                       data-val-required="tech-requirement is required">
+              </div>
+
+              <div class="row">
+                <div id="text-div1" class="text-div"  style="display:none">
+                  <br> Business SIM: </br>
+                </div>
+                <div id="business-requirement-result" class="col-md-6 col-md-offset-3" style="display:none">
+
+                  <label>Business SIM</label> : <span data-bind="text: Name"></span>
+                </div>
+              </div>
+              <div class="row">
+                <div id="text-div2" class="text-div"  style="display:none">
+                  <br> Technology SIM: </br>
+                </div>
+                <div id="tech-requirement-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Technology SIM</label> : <span data-bind="text: Email"></span>
+                </div>
+              </div>
+
+              <div id="done-div" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone()">Done</button>
+              </div>
+              <div id="redo-div" align="center" style="position:relative;top:0px;height: 20px;display:none;float:left;">
+                <button class="blue" onclick="ckiredo()" >Redo</button>
+              </div>
+
+              <div id="next-div" align="center" style="position:relative;top:0px;height: 20px;display:none;">
+                <button class="blue" onclick="ckinext()" >Next</button>
+              </div>
+
+
+
+              <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
+              <script type="text/javascript" src="static/assets/js/mawbutton.js"></script>
+              <script type="text/javascript">
+                    $('button').mawbutton({
+                        speed : 300,
+                        scale : 6,
+                        effect : "ripple",
+                        transitionEnd:function(){
+                            console.log('end');
+                        }
+                    });
+                    function ckidone(){
+                        document.getElementById("left-time1").style.display='none';
+                        document.getElementById("done-1").style.display='block';
+                        document.getElementById("redo-div").style.display='block';
+                        document.getElementById("next-div").style.display='block';
+                        document.getElementById("done-div").style.display='none';
+                        document.getElementById("form-div1").style.display='none';
+                        document.getElementById("form-div2").style.display='none';
+                        document.getElementById("text-div1").style.display='block';
+                        document.getElementById("text-div2").style.display='block';
+                        document.getElementById("business-requirement-result").style.display='block';
+                        document.getElementById("tech-requirement-result").style.display='block';
+
+                        var val = document.getElementById("business-sim").value;
+                        var div = document.getElementById("business-requirement-result");
+                        div.innerHTML = val + "";
+
+                        var val2 = document.getElementById("tech-sim").value;
+                        var div2 = document.getElementById("tech-requirement-result");
+                        div2.innerHTML = val2 + "";
+
+                    }
+                    function ckiredo(){
+                        document.getElementById("left-time1").style.display='block';
+                        document.getElementById("done-1").style.display='none';
+                        document.getElementById("redo-div").style.display='none';
+                        document.getElementById("done-div").style.display='block';
+                        document.getElementById("next-div").style.display='none';
+                        document.getElementById("form-div1").style.display='block';
+                        document.getElementById("form-div2").style.display='block';
+                        document.getElementById("business-requirement-result").style.display='none';
+                        document.getElementById("tech-requirement-result").style.display='none';
+                        document.getElementById("text-div1").style.display='none';
+                        document.getElementById("text-div2").style.display='none';
+                    }
+
+                    function ckinext(){
+                        document.getElementById("date-point-2").click();
+                    }
+
+                    function getLeftTime(endtime){
+                        nowtime = new Date().getTime();
+                        lasttime = (Date.parse(new Date(endtime)) - nowtime)/1000;
+                        if(lasttime > 0){
+                            lastdate = parseInt(lasttime/3600/24);
+                            lasthours = parseInt(lasttime/3600%24);
+                            lastminutes = parseInt(lasttime/60%60);
+                            lastseconds = parseInt(lasttime%60);
+                            strtime = 'Remain ' + '' + lastdate + '' + ' ' + '' + lasthours + '' + ' Hours';
+                            $('#left-time').text(strtime);
+                        }else {
+                            return "Miss ETA!";
+                        }
+                        return strtime;
+                    }
+                    //document.getElementById("left-time1").innerHTML = getLeftTime("2019-10-27 00:00:00");
+
+                </script>
+            </div>
+          </div>
+        </div>
+
+      </li>
+
+      <li class="cd-h-timeline__event text-component">
+        <div class="cd-h-timeline__event-content container">
+          <h2 class="cd-h-timeline__event-title">Developing</h2>
+          <span id="left-time2" style="float:right;color:red">Remain {{ remaindate2 }}</span>
+          <span id="done-2" style="float:right;color:green;display:none">Done</span>
+          <em class="cd-h-timeline__event-date">ETA: {{ date2 }}</em>
+          <p class="cd-h-timeline__event-description color-contrast-medium">
+            Fee project developing phase, developer need to complete each part listed below if needed. Update each step process, and feel free to complete it if CR is reviewed.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <div id="datakey-div" class="form-group">
+                <label>Data Key Change Step   </label>  -  <span data-bind="text: chosenes"></span>
+                <select id="datakey" name="develop-datakey" class="form-control">
+                  <option value="done">Done</option>
+                  <option value="no-need">Not need</option>
+                  <option value="blocked">Blocked</option>
+                </select>
+              </div>
+              <div id="rate-div" class="form-group">
+                <label>Fee Rate Change Step   </label>   -  <span data-bind="text: chosenes"></span>
+                <select id="rate" name="develop-rate" class="form-control">
+                  <option value="done">Done</option>
+                  <option value="no-need">Not need</option>
+                  <option value="blocked">Blocked</option>
+                </select>
+              </div>
+              <div id="test-div" class="form-group">
+                <label>Rate Unit Test Step  </label>  -  <span data-bind="text: chosenes"></span>
+                <select id="test" name="unit-test" class="form-control">
+                  <option value="done">Done</option>
+                  <option value="no-need">Not need</option>
+                  <option value="blocked">Blocked</option>
+                </select>
+              </div>
+              <div id="cr-div" class="form-group">
+                <label>CR Link   </label>  : <span data-bind="text: chosenes"></span>
+                <div class="form-group">
+                  <input id="cr" name="cr" type="text" size="55" class="form-control" placeholder="Fill in CR Link" data-bind="value: tech-requirement" data-val="true"
+                         data-val-required="tech-requirement is required">
+                </div>
+              </div>
+
+              <div class="row">
+                <div id="datakey-text" class="text-div"  style="display:none">
+                  <br> Data Key Change Step: </br>
+                </div>
+                <div id="datakey-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Data Key Change Step </label> : <span data-bind="text: Name"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div id="rate-text" class="text-div"  style="display:none">
+                  <br> Fee Rate Change Step: </br>
+                </div>
+                <div id="rate-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Fee Rate Change Step - </label> : <span data-bind="text: Name"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div id="test-text" class="text-div"  style="display:none">
+                  <br> Rate Unit Test Step: </br>
+                </div>
+                <div id="test-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Rate Unit Test Step</label> : <span data-bind="text: Name"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div id="cr-text" class="text-div"  style="display:none">
+                  <br> CR: </br>
+                </div>
+                <div id="cr-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>CR</label> : <span data-bind="text: Name"></span>
+                </div>
+              </div>
+
+              <div id="done-div-2" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone2()">Done</button>
+              </div>
+              <div id="redo-div-2" align="center" style="position:relative;top:0px;height: 20px;display:none;float:left;">
+                <button class="blue" onclick="ckiredo2()" >Redo</button>
+              </div>
+
+              <div id="next-div-2" align="center" style="position:relative;top:0px;height: 20px;display:none;">
+                <button class="blue" onclick="ckinext2()" >Next</button>
+              </div>
+
+
+              <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
+              <script type="text/javascript" src="static/assets/js/mawbutton.js"></script>
+              <script type="text/javascript">
+                    $('button').mawbutton({
+                        speed : 300,
+                        scale : 6,
+                        effect : "ripple",
+                        transitionEnd:function(){
+                            console.log('end');
+                        }
+                    });
+                    function ckidone2(){
+                        document.getElementById("left-time2").style.display='none';
+                        document.getElementById("done-2").style.display='block';
+                        document.getElementById("redo-div-2").style.display='block';
+                        document.getElementById("next-div-2").style.display='block';
+                        document.getElementById("done-div-2").style.display='none';
+                        document.getElementById("datakey-div").style.display='none';
+                        document.getElementById("rate-div").style.display='none';
+                        document.getElementById("test-div").style.display='none';
+                        document.getElementById("cr-div").style.display='none';
+                        document.getElementById("datakey-result").style.display='block';
+                        document.getElementById("rate-result").style.display='block';
+                        document.getElementById("test-result").style.display='block';
+                        document.getElementById("cr-result").style.display='block';
+                        document.getElementById("datakey-text").style.display='block';
+                        document.getElementById("rate-text").style.display='block';
+                        document.getElementById("test-text").style.display='block';
+                        document.getElementById("cr-text").style.display='block';
+
+                        var val = document.getElementById("datakey").value;
+                        var div = document.getElementById("datakey-result");
+                        div.innerHTML = val + "";
+
+                        var val2 = document.getElementById("rate").value;
+                        var div2 = document.getElementById("rate-result");
+                        div2.innerHTML = val2 + "";
+
+                        var val3 = document.getElementById("test").value;
+                        var div3 = document.getElementById("test-result");
+                        div3.innerHTML = val3 + "";
+
+                        var val4 = document.getElementById("cr").value;
+                        var div4 = document.getElementById("cr-result");
+                        div4.innerHTML = val4 + "";
+
+                    }
+                    function ckiredo2(){
+                        document.getElementById("left-time2").style.display='block';
+                        document.getElementById("done-2").style.display='none';
+                        document.getElementById("redo-div-2").style.display='none';
+                        document.getElementById("next-div-2").style.display='none';
+                        document.getElementById("done-div-2").style.display='block';
+                        document.getElementById("datakey-div").style.display='block';
+                        document.getElementById("rate-div").style.display='block';
+                        document.getElementById("test-div").style.display='block';
+                        document.getElementById("cr-div").style.display='block';
+                        document.getElementById("datakey-result").style.display='none';
+                        document.getElementById("rate-result").style.display='none';
+                        document.getElementById("test-result").style.display='none';
+                        document.getElementById("cr-result").style.display='none';
+                        document.getElementById("datakey-text").style.display='none';
+                        document.getElementById("rate-text").style.display='none';
+                        document.getElementById("test-text").style.display='none';
+                        document.getElementById("cr-text").style.display='none';
+                    }
+
+                    function ckinext2(){
+                        document.getElementById("date-point-3").click();
+                    }
+                    //document.getElementById("left-time2").innerHTML=getLeftTime("2019-11-05 00:00:00");
+
+                </script>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="cd-h-timeline__event text-component">
+        <div class="cd-h-timeline__event-content container">
+          <h2 class="cd-h-timeline__event-title">Integration Test</h2>
+          <span id="left-time3" style="float:right;color:red">Remain {{ remaindate3 }}</span>
+          <span id="done-3" style="float:right;color:green;display:none">Done</span>
+          <em class="cd-h-timeline__event-date">ETA: {{ date3 }}</em>
+          <p class="cd-h-timeline__event-description color-contrast-medium">
+            Integration Test phase. Developer need push the change to Devo and QA Engineer provide the test cases and do the test.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <div class="container">
+                <div  id="test-div1" class="page-header">
+                  <h5>Provide Test Case file and Run:</h5>
+                </div>
+                <div  id="test-div-s" class="page-header" style="display:none">
+                  <h5>Test Run Successfully!</h5>
+                </div>
+                <div id="test-div2" class="row" style="padding-top:10px;">
+                  <button id="uploadBtn" onclick="runtest()" >Run Test</button>
+
+                  <div class="col-xs-10">
+                    <div id="progressOuter" class="progress progress-striped active" style="display:none;">
+                      <div id="progressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" style="padding-top:10px;">
+                  <div class="col-xs-10">
+                    <div id="msgBox">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="done-div3" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone3()">Done</button>
+              </div>
+              <div id="redo-div3" align="center" style="position:relative;top:0px;height: 20px;display:none;float:left;">
+                <button class="blue" onclick="ckiredo3()" >Redo</button>
+              </div>
+
+              <div id="next-div3" align="center" style="position:relative;top:0px;height: 20px;display:none;">
+                <button class="blue" onclick="ckinext3()" >Next</button>
+              </div>
+
+
+
+              <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
+              <script type="text/javascript" src="static/assets/js/mawbutton.js"></script>
+              <script type="text/javascript">
+                    $('button').mawbutton({
+                        speed : 300,
+                        scale : 6,
+                        effect : "ripple",
+                        transitionEnd:function(){
+                            console.log('end');
+                        }
+                    });
+                    function ckidone3(){
+                        document.getElementById("left-time3").style.display='none';
+                        document.getElementById("done-3").style.display='block';
+                        document.getElementById("next-div3").style.display='block';
+                        document.getElementById("redo-div3").style.display='block';
+                        document.getElementById("done-div3").style.display='none';
+                        document.getElementById("test-div1").style.display='none';
+                        document.getElementById("test-div2").style.display='none';
+                        document.getElementById("test-div-s").style.display='block';
+                    }
+                    function ckiredo3(){
+                        document.getElementById("left-time3").style.display='block';
+                        document.getElementById("done-3").style.display='none';
+                        document.getElementById("next-div3").style.display='none';
+                        document.getElementById("redo-div3").style.display='none';
+                        document.getElementById("done-div3").style.display='block';
+                        document.getElementById("test-div1").style.display='block';
+                        document.getElementById("test-div2").style.display='block';
+                        document.getElementById("test-div-s").style.display='none';
+                    }
+
+                    function ckinext3(){
+                        document.getElementById("date-point-4").click();
+                    }
+
+                    function runtest(){
+                        document.getElementById("test-div-s").style.display='block';
+                    }
+                    //document.getElementById("left-time3").innerHTML=getLeftTime("2019-11-22 00:00:00");
+
+                </script>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="cd-h-timeline__event text-component">
+        <div class="cd-h-timeline__event-content container">
+          <h2 class="cd-h-timeline__event-title">Deployment</h2>
+          <span id="left-time4" style="float:right;color:red">Remain {{ remaindate4}}</span>
+          <span id="done-4" style="float:right;color:green;display:none">Done</span>
+          <em class="cd-h-timeline__event-date">ETA: {{ date4 }}</em>
+          <p class="cd-h-timeline__event-description color-contrast-medium">
+            Deployment phase, provide the MCM information here.
+          </p>
+
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+              <div id="date-div" class="container">
+                <label>Deploy Date   </label>  : <span data-bind="text: chosenes"></span>
+                <input id="date" type="text" name="birthday" value="10/15/2019" />
+                <div id="mcm-div" class="form-group">
+                  <label>MCM   </label>  : <span data-bind="text: chosenes"></span>
+                  <input id="mcm" name="mcm" type="text" size="50" class="form-control" placeholder="MCM Link" data-bind="value: business-requirement" data-val="true"
+                         data-val-required="business-requirement is required">
+                </div>
+              </div>
+
+              <script>
+                $(function() {
+                  $('input[name="birthday"]').daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    minYear: 1901,
+                    maxYear: parseInt(moment().format('YYYY'),10)
+                  }, function(start, end, label) {
+                    var years = moment().diff(start, 'years');
+                    alert("You are " + years + " years old!");
+                  });
+                });
+                </script>
+
+
+
+              <div class="row">
+                <div id="date-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>Deploy Date</label> : <span data-bind="text: Email"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div id="mcm-text" class="text-div"  style="display:none">
+                  <br> MCM: </br>
+                </div>
+                <div id="mcm-result" class="col-md-6 col-md-offset-3" style="display:none">
+                  <label>MCM Link</label> : <span data-bind="text: Email"></span>
+                </div>
+              </div>
+
+              <div id="done-div4" align="center" style="position:relative;top:0px;height: 20px;">
+                <button class="blue" onclick="ckidone4()">Done</button>
+              </div>
+              <div id="redo-div4" align="center" style="position:relative;top:0px;height: 20px;display:none">
+                <button class="blue" onclick="ckiredo4()" >Redo</button>
+              </div>
+
+
+              <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
+              <script type="text/javascript" src="static/assets/js/mawbutton.js"></script>
+              <script type="text/javascript">
+                    $('button').mawbutton({
+                        speed : 300,
+                        scale : 6,
+                        effect : "ripple",
+                        transitionEnd:function(){
+                            console.log('end');
+                        }
+                    });
+                    function ckidone4(){
+                        document.getElementById("left-time4").style.display='none';
+                        document.getElementById("done-4").style.display='block';
+                        document.getElementById("redo-div4").style.display='block';
+                        document.getElementById("done-div4").style.display='none';
+                        document.getElementById("mcm-div").style.display='none';
+                        document.getElementById("date-div").style.display='none';
+                        document.getElementById("date-result").style.display='block';
+                        document.getElementById("mcm-result").style.display='block';
+                        document.getElementById("mcm-text").style.display='block';
+
+                        var val = document.getElementById("date").value;
+                        var div = document.getElementById("date-result");
+                        div.innerHTML = val;
+
+                        var val = document.getElementById("mcm").value;
+                        var div = document.getElementById("mcm-result");
+                        div.innerHTML = val + "";
+
+                    }
+                    function ckiredo4(){
+                        document.getElementById("left-time4").style.display='block';
+                        document.getElementById("done-4").style.display='none';
+                        document.getElementById("redo-div4").style.display='none';
+                        document.getElementById("done-div4").style.display='block';
+                        document.getElementById("mcm-div").style.display='block';
+                        document.getElementById("date-div").style.display='block';
+                        document.getElementById("date-result").style.display='none';
+                        document.getElementById("mcm-result").style.display='none';
+                        document.getElementById("mcm-text").style.display='none';
+                    }
+                    //document.getElementById("left-time4").innerHTML=getLeftTime("2019-11-30 00:00:00");
+
+                </script>
+            </div>
+          </div>
+
+
+        </div>
+      </li>
+    </ol>
+  </div> <!-- .cd-h-timeline__events -->
+</section>
+<script src="static/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="static/assets/js/swipe-content.js"></script> <!-- A Vanilla JavaScript plugin to detect touch interactions -->
+<script src="static/assets/js/main.js"></script>
+
+<!--<div style="width:50%;padding:0;margin:0;float:right;box-sizing:border-box;"><input type="Done" name="ButtonAibang" value="快速查询" id="Button1" class="blue"></div>
+-->
+<!--<div align="center" style="position:relative;top:10px">
+  <button class="blue">Acknowledge</button>
+</div>
+<script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
+<script type="text/javascript" src="static/assets/js/mawbutton.js"></script>
+<script type="text/javascript">
+      $('button').mawbutton({
+          speed : 300,
+          scale : 6,
+          effect : "ripple",
+          transitionEnd:function(){
+              console.log('end');
+          }
+      });
+  </script>-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-Deployment/1.16.0/jquery.Deployment.min.js"></script>
+<script type="text/javascript"   src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.Deployment.unobtrusive.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script type="text/javascript"  src="/src/multi-step-form.js"></script>
+<script type="text/javascript">
+        function ViewModel() {
+            var self = this;
+
+            self.Name = ko.observable('');
+            self.Email = ko.observable('');
+            self.Details = ko.observable('');
+
+            self.AdditionalDetails = ko.observable('');
+            self.availableTypes = ko.observableArray(['New', 'Open', 'Closed']);
+            self.chosenType = ko.observable('');
+
+            self.availableCountries = ko.observableArray(['France', 'Germany', 'Spain', 'United States', 'Mexico']),
+            self.chosenCountries = ko.observableArray([]) // Initially, only Germany is selected
+
+
+        }
+
+        var viewModel = new ViewModel();
+
+        ko.applyBindings(viewModel);
+
+        $(document).on("msf:viewChanged", function(event, data){
+            var progress = Math.round((data.completedSteps / data.totalSteps)*100);
+
+            $(".progress-bar").css("width", progress + "%").attr('aria-valuenow', progress);   ;
+        });
+
+        $(".msf:first").multiStepForm({
+            activeIndex: 0,
+            Deployment: {},
+            hideBackButton : false,
+            allowUnDeploymentdStep : false,
+            allowClickNavigation : true
+        });
+    </script>
+
+</body>
+</html>

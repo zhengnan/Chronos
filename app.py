@@ -3,10 +3,13 @@ import json
 import os
 from flask import Flask, url_for, render_template, request, redirect
 from werkzeug.datastructures import ImmutableMultiDict
+import datetime
+import time
 
 app = Flask(__name__)
 
-TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+#TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+TEST_DATA_PATH = '/Users/huizh/Sites/Chronos-master/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -30,10 +33,6 @@ def brdn_detail():
     section3 = data.get('profitability')
     section4 = data.get('eta')
     return render_template('brddetailn.html', section1=section1, section2=section2, section3=section3, section4=section4)
-
-@app.route('/timeline.html')
-def timeline():
-    return render_template('timeline.html')
 
 @app.route('/hello', methods=['POST', 'GET'])
 def hello():
@@ -71,6 +70,25 @@ def update():
     etaTime = '2019-10-19'
     return render_template('/update.html', rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
 
+@app.route('/timeline.html')
+def timeline():
+    data = load_test_data()
+    date_1 = data.get('eta').split("\"}")[0][-11:].replace(" ","")
+    date_2 = data.get('eta').split("\"}")[1][-11:].replace(" ","")
+    date_3 = data.get('eta').split("\"}")[2][-11:].replace(" ","")
+    date_4 = data.get('eta').split("\"}")[3][-11:].replace(" ","")
+
+    return render_template('timeline.html'
+                           , date1=date_1
+                           , date2=date_2
+                           , date3=date_3
+                           , date4=date_4
+                           , remaindate1=cal_remain_days(date_1)
+                           , remaindate2=cal_remain_days(date_2)
+                           , remaindate3=cal_remain_days(date_3)
+                           , remaindate4=cal_remain_days(date_4)
+                           )
+
 def process_first(origin):
     keys = origin.keys()
     l = list(keys)
@@ -86,6 +104,13 @@ def load_test_data():
 def dump_test_data(data):
     with open(os.path.join(TEST_DATA_PATH, 'TestCase.json'), 'w') as f:
         json.dump(data, f)
+
+def cal_remain_days(end_date):
+    tmp1 = time.strptime(end_date, "%Y-%m-%d")
+    end = datetime.datetime(tmp1[0], tmp1[1], tmp1[2])
+    print(end-datetime.datetime.now())
+    return str(end-datetime.datetime.now()).split(",")[0]
+
 
 if __name__ == '__main__':
     # app.run(host, port, debug, options)
