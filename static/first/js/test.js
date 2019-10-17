@@ -143,6 +143,7 @@ function show() {
           var res1 = Math.floor(Math.random()*(max-min+1)+min);
           var res2 = Math.floor(Math.random()*(max-min+1)+min);
           var res3 = Math.floor(Math.random()*(max-min+1)+min);
+          sleep(1000);
           $('#profitability_text_1').val(res1);
           $('#profitability_text_2').val(res2);
           $('#profitability_text_3').val(res3);
@@ -214,7 +215,7 @@ function show() {
         total_json.profitability2=profitability2;
 
         console.log(JSON.stringify(total_json));
-        var subject = '[] ' + feetype + " Launch";
+        var subject = '[chronos] ' + feetype + " Launch";
         var content = 'http://127.0.0.1:5000/brddetailp.html';
 //        sendMail(subject,content);
         $.ajax({
@@ -225,7 +226,8 @@ function show() {
            success: function (data) {
          }
        });
-        window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
+       sleep(1000);
+       window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
 
 
     });
@@ -357,6 +359,8 @@ function show() {
         "access_token": "3cbfz3355dtxvqcek519lbvn"
         // // send to wenfenz@amazon.com:
         // "access_token": "pxj48f5s4o4crtmd0r13oaxi",
+        // // send to jzzhangz@amazon.com:
+        //"access_token": "9bqpegx5ms55kyyqcijxh775",
     };
     data_js['subject'] = subject;
     data_js['text'] = message;
@@ -386,5 +390,16 @@ function show() {
         }
 
         return form_data.join("&");
+    }
+
+//    function sleep(ms) {
+//      return new Promise(resolve => setTimeout(resolve, ms))
+//    }
+
+    function sleep(delay) {
+      var start = (new Date()).getTime();
+      while ((new Date()).getTime() - start < delay) {
+        continue;
+      }
     }
 }

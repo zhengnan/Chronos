@@ -30,3 +30,26 @@ button {
   float:right;
   color:#405A86;
 }
+
+select {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 35%;
+    float:left;
+    font-size:15px;
+}
+
+input {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 35%;
+    font-size:15px;
+}
+
+textarea {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    font-size:15px;
+    float:left;
+}
