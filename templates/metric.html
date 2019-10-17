@@ -1,0 +1,179 @@
+<html>
+<head>
+    <link rel="stylesheet" href="static/first/css/index.css"/>
+    <link rel="stylesheet" href="static/first/css/basics.css"/>
+    <link rel="stylesheet" href="static/first/css/select.css"/>
+    <link rel="stylesheet" href="static/first/css/table.css"/>
+    <script type="text/javascript" src="static/first/js/test.js"></script>
+    <script src="static/first/js/jquery.js"></script>
+    <script src="static/assets/js/echarts.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>Dashboard</h1>
+</header>
+
+<section id="cd-timeline" class="cd-container">
+    <div id="FeeRevenue" style="width: 500px;height:300px;" class="cd-timeline-content">
+    </div>
+    <div id="sharePie" style="width: 500px;height:300px;" class="cd-timeline-content">
+    </div>
+</section> <!-- cd-timeline -->
+
+<script type="text/javascript">
+
+function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+            Math.round(value)
+        ]
+    }
+}
+
+var data = [];
+var now = +new Date(2019, 12, 3);
+var oneDay = 24 * 3600 * 1000;
+var value = Math.random() * 1000;
+for (var i = 0; i < 1000; i++) {
+    data.push(randomData());
+}
+
+option = {
+    title: {
+        text: 'Fee Revenue'
+    },
+    tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+            params = params[0];
+            var date = new Date(params.name);
+            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+        },
+        axisPointer: {
+            animation: false
+        }
+    },
+    xAxis: {
+        type: 'time',
+        splitLine: {
+            show: false
+        }
+    },
+    yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+            show: false
+        }
+    },
+    series: [{
+        name: 'Fee Revenue',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data
+    }]
+};
+
+setInterval(function () {
+
+    for (var i = 0; i < 5; i++) {
+        data.shift();
+        data.push(randomData());
+    }
+
+    feeRevenueChart.setOption({
+        series: [{
+            data: data
+        }]
+    });
+}, 1000);
+
+var feeRevenueChart = echarts.init(document.getElementById('FeeRevenue'));
+feeRevenueChart.setOption(option);
+
+// pie
+
+sharePieOption = {
+    backgroundColor: '#2c343c',
+
+    title: {
+        text: 'SHARE',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name:'Share',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '50%'],
+            data:[
+                {value:310, name:'StorageBilling'},
+                {value:400, name:'FBAMultitierPerUnitFee'},
+                {value:235, name:'Prep Fees'},
+                {value:274, name:'Inbound Event Fees'},
+                {value:200, name:'Others'}
+            ].sort(function (a, b) { return a.value - b.value; }),
+            roseType: 'radius',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
+        }
+    ]
+};
+
+var sharePie = echarts.init(document.getElementById('sharePie'));
+sharePie.setOption(sharePieOption);
+
+</script>
+</body>
+</html>
