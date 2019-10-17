@@ -224,8 +224,8 @@ function show() {
             });
             actual_rates.push(actual_rate);
         });
-
-        return JSON.stringify(actual_rates);
+        return actual_rates;
+//        return JSON.stringify(actual_rates);
     };
 
         function getrateTitle(){
@@ -249,7 +249,8 @@ function show() {
 //                actual_rates.push(actual_rate);
             });
 
-            return JSON.stringify(actual_rate);
+//            return JSON.stringify(actual_rate);
+              return actual_rate;
         };
 
     function getEtaJson(){
@@ -265,7 +266,8 @@ function show() {
         //        eta_arrays.push({"step":step,"eta":eta});
                 eta_arrays.push(eta_item);
     }
-    return JSON.stringify(eta_arrays);
+//    return JSON.stringify(eta_arrays);
+      return eta_arrays;
 
     };
 
