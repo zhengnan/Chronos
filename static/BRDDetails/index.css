@@ -65,12 +65,63 @@ header {
   line-height: 200px;
   text-align: center;
   background: #f0ca45;
+  box-sizing: border-box;
 }
 header h1 {
   color: #ffffff;
-  font-size: 2.48832em;
-  font-size: var(--text-xxxl);
+  font-size: 18px;
+  font-size: 1.125rem;
 }
+
+.topBanner-title {
+    width: 75%;
+    float: left;
+}
+.topBanner-approvers{
+    width: 25%;
+    float: right;
+    color: #ffffff;
+    height: 200px;
+    line-height: initial;
+    border-left-style: dotted;
+}
+
+#approverListTitle {
+  list-style-type: none;
+  height: 100;
+  text-align: center;
+  min-width: 240;
+  font-weight: bold;
+}
+
+#approverList .listTitle {
+  list-style-type: none;
+  font-weight: bold;
+  height: 30;
+  text-align: left;
+  min-width: 240;
+}
+#approverList .approver {
+  height: 30;
+  text-align: left;
+  min-width: 240;
+}
+#approverList .approver .status-approved{
+  color: #00ff00
+}
+
+.clearFload {
+  clear: both;
+}
+
+
+.approveButton {
+  width: 200px;
+  height: 50px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
 
 footer {
   width:100%;
