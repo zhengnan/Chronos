@@ -112,7 +112,7 @@ header h1 {
     color: #ffffff;
     height: 200px;
     line-height: initial;
-    border-left-style: dotted;
+<!--    border-left-style: dotted; -->
 }
 
 #approverListTitle {
