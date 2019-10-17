@@ -8,7 +8,8 @@ import time
 
 app = Flask(__name__)
 
-TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+#TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+TEST_DATA_PATH = '/Users/jzzhangz/Documents/workspace/Chronos/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -20,9 +21,13 @@ def brdp_detail():
     data = load_test_data()
     section1 = data.get('changeDesc')
     section2 = data.get('rate')
+    rateTitle = data.get('rateTitle')
     section3 = data.get('profitability')
     section4 = data.get('eta')
-    return render_template('brddetailp.html', section1=section1, section2=section2, section3=section3, section4=section4)
+    section5 = data.get('profitability1')
+    section6 = data.get('profitability2')
+    section7 = data.get('etaTime')
+    return render_template('brddetailp.html', section1=section1, rateTitle=rateTitle, section2=section2, section3=section3, section4=section4,section5=section5,section6=section6,section7=section7)
 
 @app.route('/brddetailn.html')
 def brdn_detail():
@@ -59,15 +64,21 @@ def first():
 
 @app.route('/update.html')
 def update():
-    rate = ['', '']
-    rateTitle = ['123', '']
-    feeType = '321'
-    datakey = ['123', '321']
-    datakeyall = ['123', '321']
-    changeDesc = 'dsa'
-    profitability = '32132'
-    etaTime = '2019-10-19'
-    return render_template('/update.html', rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
+    data = load_test_data()
+    rate = data.get('rate')
+    rateTitle = data.get('rateTitle')
+    feeType = data.get('feeType')
+    datakey = data.get('datakey')
+    datakeyall = data.get('datakeyall')
+    changeDesc = data.get('changeDesc')
+    profitability = data.get('profitability')
+    eta = data.get('eta')
+    etaTime = data.get('etaTime')
+    profitability = data.get('profitability')
+    profitability1 = data.get('profitability1')
+    profitability2 = data.get('profitability2')
+    return render_template('/update.html', eta=eta, rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, profitability1=profitability, profitability2=profitability2,etaTime=etaTime)
+
 
 @app.route('/timeline.html')
 def timeline():

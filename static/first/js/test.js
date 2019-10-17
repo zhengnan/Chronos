@@ -168,7 +168,8 @@ function show() {
 
         console.log(JSON.stringify(total_json));
         var subject = '[] ' + feetype + " Creation";
-//        sendMail(subject);
+        var content = JSON.stringify(total_json);
+        sendMail(subject,content);
         $.ajax({
            url: '/first',
            type: 'GET',
@@ -272,44 +273,44 @@ function show() {
     };
 
 
-//    function sendMail(subject, message){
+    function sendMail(subject, message){
 //	var subject = "[IR2] Request to approve a fee program launch request";
-//	var message = "Hi Nan,
+//	var message = "Hi Nan";
 //	There is an program launch approval request pending your approval.
 //	Please review it at this page and give your opnion at: http://127.0.0.1:5000/brddetailn.html
 //
 //	Thanks,
 //	Fee Program Launcher Website
 //	";
-//
-//
-//    var data_js = {
-//        // send to nanzhen@amazon.com
-//        "access_token": "3cbfz3355dtxvqcek519lbvn"
-//        // // send to wenfenz@amazon.com:
-//        // "access_token": "pxj48f5s4o4crtmd0r13oaxi",
-//    };
-//    data_js['subject'] = subject;
-//    data_js['text'] = message;
-//
-//    var params = toParams(data_js);
-//
-//    var request = new XMLHttpRequest();
-//    /*
-//    request.onreadystatechange = function() {
-//        if (request.readyState == 4 && request.status == 200) {
-//            // window.location = window.location.pathname + "?message=Email+Successfully+Sent%21&isError=0";
-//        } else if(request.readyState == 4) {
-//            // window.location = window.location.pathname + "?message=Email+could+not+be+sent.&isError=1";
-//        }
-//    };
-//    */
-//    request.open("POST", "https://postmail.invotes.com/send", true);
-//    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//
-//    request.send(params);
-//}
-//
+
+
+    var data_js = {
+        // send to nanzhen@amazon.com
+        "access_token": "3cbfz3355dtxvqcek519lbvn"
+        // // send to wenfenz@amazon.com:
+        // "access_token": "pxj48f5s4o4crtmd0r13oaxi",
+    };
+    data_js['subject'] = subject;
+    data_js['text'] = message;
+
+    var params = toParams(data_js);
+
+    var request = new XMLHttpRequest();
+    /*
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            // window.location = window.location.pathname + "?message=Email+Successfully+Sent%21&isError=0";
+        } else if(request.readyState == 4) {
+            // window.location = window.location.pathname + "?message=Email+could+not+be+sent.&isError=1";
+        }
+    };
+    */
+    request.open("POST", "https://postmail.invotes.com/send", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    request.send(params);
+}
+
     function toParams(data_js) {
         var form_data = [];
         for ( var key in data_js ) {
