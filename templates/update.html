@@ -10,7 +10,7 @@
 <body>
 <header>
     <h1>Responsive Vertical Timeline</h1>
-</header>
+</header>s
 
 <section id="cd-timeline" class="cd-container">
     <div id="commentable-container" class="container commentable-container">
@@ -59,7 +59,7 @@
             <div class="cd-timeline-content">
                 <h2>Select Other DataKey</h2>
                 <div class="commentable-section">
-
+s
                     <select id="all_fee_sodr" multiple="multiple" disabled class="select-box" style="width:300px;height:50px">
                         {% for datakey in datakeyall %}
                         <option>{{datakey}}</option>
@@ -103,11 +103,11 @@
             <div class="cd-timeline-content">
                 <h2>Profitability</h2>
                 <label>Incremental GMS:</label>
-                <input type="text" id="profitability_text_1" name="profitability_text_1" value={{profitability}} /><br/><br/>
+                <input type="text" id="profitability_text_1" name="profitability_text_1" value={{ profitability }} /><br/><br/>
                 <label>Incremental Fee Revenue:</label>
-                <input type="text" id="profitability_text_2" name="profitability_text_2" value={{profitability1}} /><br/><br/>
+                <input type="text" id="profitability_text_2" name="profitability_text_2" value={{ profitability1 }} /><br/><br/>
                 <label>Incremental Operating Profit:</label>
-                <input type="text" id="profitability_text_3" name="profitability_text_3" value={{profitability2}} /><br/><br/>
+                <input type="text" id="profitability_text_3" name="profitability_text_3" value={{ profitability2 }} /><br/><br/>
 
                 <button id="generate-profitability_text" class="button" value="" onclick="generateProfitability();">Fare Simulation</button>
             </div> <!-- cd-timeline-content -->
@@ -118,7 +118,7 @@
             </div> <!-- cd-timeline-img -->
             <div class="cd-timeline-content">
                 <h2>ETA</h2>
-                <input id="eta_time_box" type="date" value={{etaTime}} />
+                <input id="eta_time_box" type="date" value={{ etaTime }} />
                 <button id="generate-eta_text" class="button" value="" onclick="generateEta();">Generate ETA</button>
                 <p data-section-id="004" class="commentable-section">
                     Lorem ipsum .</p>
