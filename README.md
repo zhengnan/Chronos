@@ -1,2 +1,1 @@
-# Chronos
-IR2 Events Project
+# Chronos IR2 Events Project
