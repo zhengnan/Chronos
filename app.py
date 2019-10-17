@@ -56,6 +56,10 @@ def comments():
 def input():
     return render_template('/input.html')
 
+@app.route('/metric.html')
+def metric():
+    return render_template('/metric.html')
+
 @app.route('/first', methods=['POST', 'GET'])
 def first():
     process_first(request.args.to_dict())
