@@ -8,7 +8,8 @@ import time
 
 app = Flask(__name__)
 
-TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+#TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+TEST_DATA_PATH = '/Users/huizh/Sites/Chronos-master/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -72,10 +73,12 @@ def update():
 @app.route('/timeline.html')
 def timeline():
     data = load_test_data()
-    date_1 = data.get('eta').split("\"}")[0][-11:].replace(" ","")
-    date_2 = data.get('eta').split("\"}")[1][-11:].replace(" ","")
-    date_3 = data.get('eta').split("\"}")[2][-11:].replace(" ","")
-    date_4 = data.get('eta').split("\"}")[3][-11:].replace(" ","")
+    print("Debug")
+    print(data.get('eta')[0][1])
+    date_1 = data.get('eta')[0][1].replace(" ","")
+    date_2 = data.get('eta')[1][1].replace(" ","")
+    date_3 = data.get('eta')[2][1].replace(" ","")
+    date_4 = data.get('eta')[3][1].replace(" ","")
 
     return render_template('timeline.html'
                            , date1=date_1
