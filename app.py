@@ -18,9 +18,13 @@ def brdp_detail():
     data = load_test_data()
     section1 = data.get('changeDesc')
     section2 = data.get('rate')
+    rateTitle = data.get('rateTitle')
     section3 = data.get('profitability')
     section4 = data.get('eta')
-    return render_template('brddetailp.html', section1=section1, section2=section2, section3=section3, section4=section4)
+    section5 = data.get('profitability1')
+    section6 = data.get('profitability2')
+    section7 = data.get('etaTime')
+    return render_template('brddetailp.html', section1=section1, rateTitle=rateTitle, section2=section2, section3=section3, section4=section4,section5=section5,section6=section6,section7=section7)
 
 @app.route('/brddetailn.html')
 def brdn_detail():
@@ -61,15 +65,16 @@ def first():
 
 @app.route('/update.html')
 def update():
-    rate = ['', '']
-    rateTitle = ['123', '']
+    rate = [["true","true","1"],["true","false","2"],["false","true","3"],["false","false","4"]]
+    rateTitle = ["sortable","panEU","rate"]
     feeType = '321'
     datakey = ['123', '321']
     datakeyall = ['123', '321']
     changeDesc = 'dsa'
     profitability = '32132'
     etaTime = '2019-10-19'
-    return render_template('/update.html', rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
+    eta= [["Validation Reguriment"," 2019-10-20 "],["Development"," 2019-10-23 "],["Test"," 2019-10-27 "],["Deployment"," 2019-10-30 "]]
+    return render_template('/update.html', eta=eta, rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
 
 def process_first(origin):
     keys = origin.keys()
