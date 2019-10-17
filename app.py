@@ -100,6 +100,10 @@ def timeline():
                            , remaindate4=cal_remain_days(date_4)
                            )
 
+@app.route('/approve', methods=['POST', 'GET'])
+def approve():
+    data = request.args.get('Zheng, Nan')
+
 def process_first(origin):
     keys = origin.keys()
     l = list(keys)
@@ -121,7 +125,6 @@ def cal_remain_days(end_date):
     end = datetime.datetime(tmp1[0], tmp1[1], tmp1[2])
     print(end-datetime.datetime.now())
     return str(end-datetime.datetime.now()).split(",")[0]
-
 
 if __name__ == '__main__':
     # app.run(host, port, debug, options)

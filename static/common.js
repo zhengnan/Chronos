@@ -1,18 +1,18 @@
-function hello() {
+function onBRDPageApproveButtonClicked() {
     var data = {
-        'section1': 'section1'
+        'Zheng, Nan': 'Approved'
     }
     $.ajax(
         {
             type: 'GET',
-            url: '/hello',
+            url: '/approve',
             data: data,
             dataType: "json",
             success: function(data) {
             }
         }
     );
-    window.location.href = 'http://127.0.0.1:5000/timeline.html';
+    window.location.href = 'http://127.0.0.1:5000/brddetailn.html';
 }
 
 function onBRDPageNextButtonClicked() {
@@ -23,6 +23,3 @@ function onBRDPagePreviousButtonClicked() {
 	window.location.href = 'http://127.0.0.1:5000/update.html';
 }
 
-function onBRDPageApproveButtonClicked(e) {
-
-}
