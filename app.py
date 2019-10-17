@@ -59,14 +59,19 @@ def first():
 
 @app.route('/update.html')
 def update():
-    rate = ['', '']
-    rateTitle = ['123', '']
-    feeType = '321'
-    datakey = ['123', '321']
-    datakeyall = ['123', '321']
-    changeDesc = 'dsa'
-    profitability = '32132'
-    etaTime = '2019-10-19'
+    data = load_test_data()
+    rate = data.get('rate')
+    rateTitle = data.get('rateTitle')
+    feeType = data.get('feeType')
+    datakey = data.get('datakey')
+    datakeyall = data.get('datakeyall')
+    changeDesc = data.get('changeDesc')
+    profitability = data.get('profitability')
+    eta = data.get('eta')
+    etaTime = data.get('etaTime')
+    profitability = data.get('profitability')
+    profitability1 = data.get('profitability1')
+    profitability2 = data.get('profitability2')
     return render_template('/update.html', rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
 
 @app.route('/timeline.html')
