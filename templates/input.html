@@ -102,8 +102,10 @@
             </div> <!-- cd-timeline-img -->
             <div class="cd-timeline-content">
                 <h2>ETA</h2>
+                <label class="bggreen">Recommend ETA:</label>
+                <label class="bggreen" id="recommendETA"></label><br/>
                 <input id="eta_time_box" type="date"/>
-                <button id="generate-eta_text" class="button" value="" onclick="generateEta();">Generate ETA</button>
+                <button id="generate-eta_text" class="button" value="" onclick="generateEta();">Generate Timeline</button>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
 
@@ -111,7 +113,7 @@
             <div class="cd-timeline-img cd-picture">
             </div> <!-- cd-timeline-img -->
             <div class="cd-timeline-content">
-                <h2>ETA Desc</h2>
+                <h2>Timeline</h2>
                 <div id="div_eta_table">
                     <table id="eta_table" border="1">
                     </table>
@@ -125,9 +127,7 @@
             <div class="cd-timeline-content">
                 <h2>Approver</h2>
                 <div id="div_approver">
-                    <ul id="approver_list">
-                        <li>nanzhen@amazon.com</li>
-                    </ul>
+                    <textarea type="text" rows="5" cols="100" id="approver_text">nanzhen@amazon.com;</textarea>
                 </div>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
@@ -136,7 +136,6 @@
             <div class="cd-timeline-img cd-picture">
             </div> <!-- cd-timeline-img -->
             <div class="cd-timeline-content">
-                <h2>Send Approve</h2>
                 <button id="send_approve" class="button" value="">Send Approve</button>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->

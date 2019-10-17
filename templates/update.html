@@ -90,7 +90,6 @@
                         {% endfor %}
                     </table>
                 </div>
-                <button id="edit_rate" class="button" value="" >Edit Rate</button>
                 <p data-section-id="003" class="commentable-section">
 
                 </p>
@@ -129,7 +128,7 @@
             <div class="cd-timeline-content">
                 <h2>ETA</h2>
                 <input id="eta_time_box" type="date" value={{ etaTime }} />
-                <button id="generate-eta_text" class="button" value="" onclick="generateEta();">Generate ETA</button>
+                <button id="generate-eta_text" class="button" value="" onclick="generateEta();">Generate Timeline</button>
                 <p data-section-id="004" class="commentable-section">
                     </p>
             </div> <!-- cd-timeline-content -->
@@ -139,7 +138,7 @@
             <div class="cd-timeline-img cd-picture">
             </div> <!-- cd-timeline-img -->
             <div class="cd-timeline-content">
-                <h2>ETA Desc</h2>
+                <h2>ETA Timeline</h2>
                 <div id="div_eta_table">
                     <table id="eta_table" border="1">
                         {% for trrow in eta %}
@@ -156,10 +155,9 @@
 
         <div class="cd-timeline-block">
             <div class="cd-timeline-img cd-picture">
-            </div> <!-- cd-timeline-img -->
+            </div> <!-- cd-timeline-img -->T
             <div class="cd-timeline-content">
-                <h2>Send Approve</h2>
-                <button id="send_approve" class="button" value="">Send Approve</button>
+                <button id="send_update_approve" class="button" value="">Send Approve</button>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
     </div>
