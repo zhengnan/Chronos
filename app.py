@@ -8,7 +8,8 @@ import time
 
 app = Flask(__name__)
 
-TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+# TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+TEST_DATA_PATH = '/Users/wenfenz/projects/IR2/src/Chronos/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
