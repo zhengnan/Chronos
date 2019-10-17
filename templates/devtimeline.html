@@ -511,8 +511,11 @@
               <div id="done-div4" align="center" style="position:relative;top:0px;height: 20px;">
                 <button class="blue" onclick="ckidone4()">Done</button>
               </div>
-              <div id="redo-div4" align="center" style="position:relative;top:0px;height: 20px;display:none">
+              <div id="redo-div4" align="center" style="position:relative;top:0px;height: 200px;display:none;float:left">
                 <button class="blue" onclick="ckiredo4()" >Redo</button>
+              </div>
+              <div id="finish-div4" align="center" style="position:relative;top:0px;height: 200px;display:none;float:right">
+                <button class="blue"  onclick="location.href='http://127.0.0.1:5000/dashboard.html'">finish</button>
               </div>
 
 
@@ -532,6 +535,7 @@
                         document.getElementById("done-4").style.display='block';
                         document.getElementById("redo-div4").style.display='block';
                         document.getElementById("done-div4").style.display='none';
+                        document.getElementById("finish-div4").style.display='block';
                         document.getElementById("mcm-div").style.display='none';
                         document.getElementById("date-div").style.display='none';
                         document.getElementById("date-result").style.display='block';
@@ -551,6 +555,7 @@
                         document.getElementById("left-time4").style.display='block';
                         document.getElementById("done-4").style.display='none';
                         document.getElementById("redo-div4").style.display='none';
+                        document.getElementById("finish-div4").style.display='none';
                         document.getElementById("done-div4").style.display='block';
                         document.getElementById("mcm-div").style.display='block';
                         document.getElementById("date-div").style.display='block';

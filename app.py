@@ -130,6 +130,10 @@ def approve():
 def start():
     return render_template('start.html')
 
+@app.route('/dashboard.html')
+def dashboard():
+    return render_template('dashboard.html')
+
 def process_first(origin):
     keys = origin.keys()
     l = list(keys)
@@ -149,7 +153,7 @@ def dump_test_data(data):
 def cal_remain_days(end_date):
     tmp1 = time.strptime(end_date, "%Y-%m-%d")
     end = datetime.datetime(tmp1[0], tmp1[1], tmp1[2])
-    #print(end-datetime.datetime.now())
+    print(end-datetime.datetime.now())
     diff = int(str(end-datetime.datetime.now()).split(" ")[0])
     print(diff)
     if diff<15:
