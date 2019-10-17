@@ -157,8 +157,8 @@ function show() {
         total_json.rate=rate_json == null ? "[]" : rate_json;
         total_json.rateTitle = rate_title;
         total_json.feeType=feetype == null?"":feetype;
-        total_json.datakey=fee_specific_sodrs==null?"":fee_specific_sodrs;
-        total_json.datakeyall=all_fee_sodrs==null?"":all_fee_sodrs;
+        total_json.datakey=fee_specific_sodrs==null?[]:fee_specific_sodrs;
+        total_json.datakeyall=all_fee_sodrs==null?[]:all_fee_sodrs;
         total_json.changeDesc=change_desc==null?"":change_desc;
         total_json.profitability=profitability;
         total_json.eta=eta_json==null?"[]":eta_json;
@@ -310,12 +310,12 @@ function show() {
 //    request.send(params);
 //}
 //
-//    function toParams(data_js) {
-//        var form_data = [];
-//        for ( var key in data_js ) {
-//            form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
-//        }
-//
-//        return form_data.join("&");
-//    }
+    function toParams(data_js) {
+        var form_data = [];
+        for ( var key in data_js ) {
+            form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
+        }
+
+        return form_data.join("&");
+    }
 }
