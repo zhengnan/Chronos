@@ -8,8 +8,7 @@ import time
 
 app = Flask(__name__)
 
-#TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
-TEST_DATA_PATH = '/Users/huizh/Sites/Chronos-master/test_data/'
+TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -64,16 +63,21 @@ def first():
 
 @app.route('/update.html')
 def update():
-    rate = [["true","true","1"],["true","false","2"],["false","true","3"],["false","false","4"]]
-    rateTitle = ["sortable","panEU","rate"]
-    feeType = '321'
-    datakey = ['123', '321']
-    datakeyall = ['123', '321']
-    changeDesc = 'dsa'
-    profitability = '32132'
-    etaTime = '2019-10-19'
-    eta= [["Validation Reguriment"," 2019-10-20 "],["Development"," 2019-10-23 "],["Test"," 2019-10-27 "],["Deployment"," 2019-10-30 "]]
-    return render_template('/update.html', eta=eta, rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
+    data = load_test_data()
+    rate = data.get('rate')
+    rateTitle = data.get('rateTitle')
+    feeType = data.get('feeType')
+    datakey = data.get('datakey')
+    datakeyall = data.get('datakeyall')
+    changeDesc = data.get('changeDesc')
+    profitability = data.get('profitability')
+    eta = data.get('eta')
+    etaTime = data.get('etaTime')
+    profitability = data.get('profitability')
+    profitability1 = data.get('profitability1')
+    profitability2 = data.get('profitability2')
+    return render_template('/update.html', rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
+
 
 @app.route('/timeline.html')
 def timeline():
