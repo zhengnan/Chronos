@@ -169,7 +169,7 @@ function show() {
         console.log(JSON.stringify(total_json));
         var subject = '[] ' + feetype + " Creation";
         var content = JSON.stringify(total_json);
-        sendMail(subject,content;
+        sendMail(subject,content);
         $.ajax({
            url: '/first',
            type: 'GET',

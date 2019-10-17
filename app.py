@@ -8,7 +8,8 @@ import time
 
 app = Flask(__name__)
 
-TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+#TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
+TEST_DATA_PATH = '/Users/jzzhangz/Documents/workspace/Chronos/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -76,7 +77,7 @@ def update():
     profitability = data.get('profitability')
     profitability1 = data.get('profitability1')
     profitability2 = data.get('profitability2')
-    return render_template('/update.html', rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, etaTime=etaTime)
+    return render_template('/update.html', eta=eta, rate=rate, rateTitle=rateTitle, feeType=feeType, datakey=datakey, datakeyall=datakeyall, changeDesc=changeDesc, profitability=profitability, profitability1=profitability, profitability2=profitability2,etaTime=etaTime)
 
 
 @app.route('/timeline.html')
