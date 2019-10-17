@@ -9,7 +9,6 @@ import time
 app = Flask(__name__)
 
 TEST_DATA_PATH = '/Users/nanzhen/workspace/Chronos/test_data/'
-TEST_DATA_PATH = '/Users/huizh/Documents/Chronos-2/Chronos/test_data/'
 
 # route()方法用于设定路由；类似spring路由配置
 @app.route('/')
@@ -27,7 +26,12 @@ def brdp_detail():
     section5 = data.get('profitability1')
     section6 = data.get('profitability2')
     section7 = data.get('etaTime')
-    return render_template('brddetailp.html', section1=section1, rateTitle=rateTitle, section2=section2, section3=section3, section4=section4,section5=section5,section6=section6,section7=section7)
+
+    approveItems = get_parsed_approver_items()
+
+    return render_template('brddetailp.html', section1=section1, rateTitle=rateTitle, section2=section2, section3=section3
+        , section4=section4, section5=section5, section6=section6, section7=section7
+        , approveItems=approveItems)
 
 @app.route('/brddetailn.html')
 def brdn_detail():
@@ -36,7 +40,11 @@ def brdn_detail():
     section2 = data.get('rate')
     section3 = data.get('profitability')
     section4 = data.get('eta')
-    return render_template('brddetailn.html', section1=section1, section2=section2, section3=section3, section4=section4)
+
+    approveItems = get_parsed_approver_items()
+
+    return render_template('brddetailn.html', section1=section1, section2=section2, section3=section3, section4=section4
+        , approveItems=approveItems)
 
 @app.route('/hello', methods=['POST', 'GET'])
 def hello():
@@ -124,7 +132,16 @@ def devtimeline():
 
 @app.route('/approve', methods=['POST', 'GET'])
 def approve():
-    data = request.args.get('Zheng, Nan')
+    approver = 'Zheng, Nan'
+    approveStatus = request.args.get(approver)
+    cssClass = 'status-approved' if (approveStatus == 'Approved') else 'status'
+    statusObj = {'status': approveStatus, 'cssClass': cssClass}
+    print('statusObj: ', statusObj)
+
+    persistData = load_approve_data()
+    persistData[approver] = statusObj
+    dump_approve_data(persistData)
+
 
 @app.route('/start.html')
 def start():
@@ -150,6 +167,17 @@ def dump_test_data(data):
     with open(os.path.join(TEST_DATA_PATH, 'TestCase.json'), 'w') as f:
         json.dump(data, f)
 
+def load_approve_data():
+    data = {}
+    with open(os.path.join(TEST_DATA_PATH, 'Reviewers.json'), 'r') as f:
+        print('In load_approve_data(). f: ', f)
+        data = json.load(f)
+    return data
+
+def dump_approve_data(data):
+    with open(os.path.join(TEST_DATA_PATH, 'Reviewers.json'), 'w') as f:
+        json.dump(data, f)
+
 def cal_remain_days(end_date):
     tmp1 = time.strptime(end_date, "%Y-%m-%d")
     end = datetime.datetime(tmp1[0], tmp1[1], tmp1[2])
@@ -161,6 +189,24 @@ def cal_remain_days(end_date):
     else:
         return "Remain " + str(end-datetime.datetime.now()).split(",")[0]
     return str(end-datetime.datetime.now()).split(",")[0]
+
+def get_parsed_approver_items():
+    outputItems = list()
+
+    approveData = load_approve_data()
+    # print('in brdn_detail(). approveData: ', approveData)
+
+    dataKeys = approveData.keys()
+    # print('approveData.keys(): ', dataKeys)
+    for oneKey in dataKeys:
+        loadedItem = approveData[oneKey]
+        outputItem = dict()
+        outputItem['approver'] = oneKey
+        outputItem['status'] = loadedItem['status']
+        outputItem['cssClass'] = loadedItem['cssClass']
+        outputItems.append(outputItem)
+
+    return outputItems
 
 if __name__ == '__main__':
     # app.run(host, port, debug, options)
