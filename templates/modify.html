@@ -1,0 +1,129 @@
+<body>
+<header>
+    <h1>Responsive Vertical Timeline</h1>
+</header>
+
+<section id="cd-timeline" class="cd-container">
+    <div id="commentable-container" class="container commentable-container">
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Please Select FeeType</h2>
+                <div class="commentable-section">
+                    <select id="loc_province" class="select-box" style="width:300px;height:35px">
+                        <option>{{fee_type_data}}</option>
+                    </select>
+                </div>
+
+                <p data-section-id="002" class="commentable-section">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut
+                    hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                    qui ut.</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Select DataKey</h2>
+                <div class="commentable-section">
+                    <select id="loc_city" multiple="multiple" size=5 class="select-box" style="width:300px;height:50px">
+                        {% for message in datakey_data %}
+                        <option>{{message}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <p data-section-id="001" class="commentable-section">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut
+                    hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Select Other DataKey</h2>
+                <div class="commentable-section">
+                    <select id="loc_town" multiple="multiple" class="select-box" style="width:300px;height:50px"></select>
+                </div>
+                <button id="generate-rate-table" class="button" value="" onclick="generateRateTable();">Generate Rate Table</button>
+                <p data-section-id="001" class="commentable-section">
+                    Lorem ipsum </p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Rate Table</h2>
+                <div id="div_rate_table">
+                </div>
+                <p data-section-id="003" class="commentable-section">
+                    Lorem ipsum .
+                </p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Profitability</h2>
+                <p data-section-id="003" class="commentable-section">
+                    Lorem ipsum .
+                </p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>ETA</h2>
+                <p data-section-id="004" class="commentable-section">
+                    Lorem ipsum .</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Title of section 5</h2>
+                <p data-section-id="005" class="commentable-section">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Final Section</h2>
+                <p data-section-id="006" class="commentable-section">
+                    This is the content of the last section</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    </div>
+</section> <!-- cd-timeline -->
+<script src="support/js/jquery.js"></script>
+<script src="support/test_data.js"></script>
+<script>
+       $(function() {
+            addDataKey();
+            showLocation();
+            $('#btnval').click(function() {
+                alert($('#loc_province').val() + ' - ' + $('#loc_city').val() + ' - ' + $('#loc_town').val())
+            });
+            $('#btntext').click(function() {
+                alert($('#loc_province').select2('data').text + ' - ' + $('#loc_city').select2('data').text + ' - ' + $('#loc_town').select2('data').text)
+            });
+        });
+</script>
+</body>
+</html>

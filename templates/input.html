@@ -1,0 +1,165 @@
+<html>
+<head>
+    <link rel="stylesheet" href="static/first/css/index.css"/>
+    <link rel="stylesheet" href="static/first/css/basics.css"/>
+    <link rel="stylesheet" href="static/first/css/select.css"/>
+    <link rel="stylesheet" href="static/first/css/table.css"/>
+    <script type="text/javascript" src="static/first/js/test.js"></script>
+    <script src="static/first/js/jquery.js"></script>
+</head>
+<body>
+<header>
+    <h1>Responsive Vertical Timeline</h1>
+</header>
+
+<section id="cd-timeline" class="cd-container">
+    <div id="commentable-container" class="container commentable-container">
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Please Select FeeType</h2>
+                <div class="commentable-section">
+                    <select id="fee_type" class="select-box"  style="width:300px;height:35px">
+                        <option value='default-value'>Please select fee type</option>
+                    </select>
+                </div>
+
+                <p data-section-id="002" class="commentable-section">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut
+                    hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis
+                    qui ut.</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Select DataKey</h2>
+                <div class="commentable-section">
+                    <select id="fee_specific_sodr" multiple="multiple" size=5 class="select-box" style="width:300px;height:50px"></select>
+                </div>
+
+                <p data-section-id="001" class="commentable-section">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut
+                    hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Select Other DataKey</h2>
+                <div class="commentable-section">
+                    <select id="all_fee_sodr" multiple="multiple" class="select-box" style="width:300px;height:50px"></select>
+                </div>
+                <button id="generate-rate-table" class="button" value="" onclick="generateRateTable();">Generate Rate Table</button>
+                <p data-section-id="001" class="commentable-section">
+                    Lorem ipsum </p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Rate Table</h2>
+                <div id="div_rate_table">
+                    <table id="rate_table" border="1">
+                    </table>
+                </div>
+                <p data-section-id="003" class="commentable-section">
+                    Lorem ipsum .
+                </p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Change Desc</h2>
+                <textarea type="text" rows="5" cols="100" id="change_desc_text"></textarea>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Profitability</h2>
+                <label>Incremental GMS:</label>
+                <input type="text" id="profitability_text_1" name="profitability_text_1"/><br/><br/>
+                <label>Incremental Fee Revenue:</label>
+                <input type="text" id="profitability_text_2" name="profitability_text_2"/><br/><br/>
+                <label>Incremental Operating Profit:</label>
+                <input type="text" id="profitability_text_3" name="profitability_text_3"/><br/><br/>
+
+                <button id="generate-profitability_text" class="button" value="" onclick="generateProfitability();">Fare Simulation</button>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>ETA</h2>
+                <input id="eta_time_box" type="date"/>
+                <button id="generate-eta_text" class="button" value="" onclick="generateEta();">Generate ETA</button>
+                <p data-section-id="004" class="commentable-section">
+                    Lorem ipsum .</p>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>ETA Desc</h2>
+                <div id="div_eta_table">
+                    <table id="eta_table" border="1">
+                    </table>
+                </div>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Approver</h2>
+                <div id="div_approver">
+                    <ul id="approver_list">
+                        <li>nanzhen@amazon.com</li>
+                    </ul>
+                </div>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <h2>Send Approve</h2>
+                <button id="send_approve" class="button" value="">Send Approve</button>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    </div>
+</section> <!-- cd-timeline -->
+
+<script>
+       $(function() {
+            show();
+            $('#btnval').click(function() {
+                alert($('#loc_province').val() + ' - ' + $('#loc_city').val() + ' - ' + $('#loc_town').val())
+            });
+            $('#btntext').click(function() {
+                alert($('#loc_province').select2('data').text + ' - ' + $('#loc_city').select2('data').text + ' - ' + $('#loc_town').select2('data').text)
+            });
+        });
+</script>
+</body>
+</html>
