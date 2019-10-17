@@ -118,6 +118,12 @@ function show() {
     			rate_row = rate_row + "</tr>"
     			$('#rate_table').append(rate_row);
     		});
+
+            var cur = new Date();
+            var nextDate = Math.ceil(Math.random()*60);
+            cur.setDate(cur.getDate()+nextDate);
+            document.getElementById('recommendETA').innerHTML= cur.Format("YYYY-MM-DD");
+            document.getElementById('eta_time_box').value= cur.Format("YYYY-MM-DD");
         });
 
     function cartesianProduct(arr) {
@@ -149,6 +155,15 @@ function show() {
 
      var startTime = dateFormat(myDate);
      var endTime = document.getElementById('eta_time_box').value;
+
+     var suggestTime = document.getElementById('recommendETA').innerHTML;
+     var time1 = new Date(endTime.replace("-", "/").replace("-", "/"));
+
+     var time2 = new Date(suggestTime.replace("-", "/").replace("-", "/"));
+
+     if(time1 < time2)alert("ETA Time Has Risk. Please Connect With Tech Team.");
+
+
      var split_Time = splitTime(startTime,endTime,4);
      var rowdata = ["Validation Reguriment", "Development", "Test", "Deployment"];
 
@@ -163,6 +178,10 @@ function show() {
      tab+='</table>';
      div1.innerHTML=tab;
     });
+
+  $('#send_update_approve').click(function(){
+    window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
+  });
 
     $('#send_approve').click(function(){
         var obj = document.getElementById("fee_type");
@@ -195,9 +214,9 @@ function show() {
         total_json.profitability2=profitability2;
 
         console.log(JSON.stringify(total_json));
-        var subject = '[] ' + feetype + " Creation";
-        var content = JSON.stringify(total_json);
-        sendMail(subject,content);
+        var subject = '[] ' + feetype + " Launch";
+        var content = 'http://127.0.0.1:5000/brddetailp.html';
+//        sendMail(subject,content);
         $.ajax({
            url: '/first',
            type: 'GET',
@@ -223,6 +242,27 @@ function show() {
 		temp[i]=new Date(startTime.getTime());
 	}
 	return temp;
+    }
+
+    Date.prototype.Format = function(style) {
+        var formatTime = '';
+        var timeObj = {
+            "M+": this.getMonth() + 1, //月份
+            "D+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(Y+)/.test(style)){
+            formatTime = style.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+        for (var k in timeObj ){
+            if (new RegExp("(" + k + ")").test(formatTime)){
+                formatTime = formatTime.replace(RegExp.$1, (RegExp.$1.length == 1) ? (timeObj[k]) : (("00" + timeObj[k]).substr(("" + timeObj[k]).length)) );
+            }
+        }
+        return formatTime ;
     }
 
     function dateFormat(myDate){

@@ -26,7 +26,21 @@
 			</div> <!-- cd-timeline-img -->
 			<div class="cd-timeline-content">
 				<h2>Rate</h2>
-                <p data-section-id="001" class="commentable-section">{{ section2 }}</p>
+				<table id="rate_table" border="1">
+					<tr>
+						{% for title in rateTitle %}
+						<th>{{title}}</th>
+						{% endfor %}
+					</tr>
+
+					{% for raterow in section2 %}
+					<tr>
+						{% for rateitem in raterow %}
+						<td>{{rateitem}}</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</table>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
 
@@ -35,7 +49,9 @@
 			</div> <!-- cd-timeline-img -->
 			<div class="cd-timeline-content">
 				<h2>Profitability</h2>
-				<p data-section-id="003" class="commentable-section">{{ section3 }}</p>
+				<p data-section-id="003" class="commentable-section">Incremental GMS: {{ section3 }}</p>
+				<p data-section-id="003" class="commentable-section">Incremental Fee Revenue: {{ section3 }}</p>
+				<p data-section-id="003" class="commentable-section">Incremental Operating Profit: {{ section3 }}</p>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
 
@@ -52,21 +68,20 @@
             <div class="cd-timeline-img cd-picture">
 			</div> <!-- cd-timeline-img -->
 			<div class="cd-timeline-content">
-				<h2>Title of section 5</h2>
-				<p data-section-id="005" class="commentable-section">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
+				<h2>Timeline</h2>
+				<table id="eta_table" border="1">
+					{% for trrow in section4 %}
+					<tr>
+						{% for tditem in trrow %}
+						<td>{{tditem}}</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</table>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
 
-		<div class="cd-timeline-block">
-            <div class="cd-timeline-img cd-picture">
-			</div> <!-- cd-timeline-img -->
-			<div class="cd-timeline-content">
-				<h2>Final Section</h2>
-				<p data-section-id="006" class="commentable-section">
-                This is the content of the last section</p>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
+
         </div>
 	</section> <!-- cd-timeline -->
     <footer>

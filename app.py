@@ -108,6 +108,10 @@ def timeline():
 def approve():
     data = request.args.get('Zheng, Nan')
 
+@app.route('/start.html')
+def start():
+    return render_template('start.html')
+
 def process_first(origin):
     keys = origin.keys()
     l = list(keys)
