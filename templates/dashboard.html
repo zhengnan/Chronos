@@ -14,9 +14,9 @@
 </header>
 
 <section id="cd-timeline" class="cd-container">
-    <div id="FeeRevenue" style="width: 500px;height:300px;" class="cd-timeline-content">
+    <div id="FeeRevenue" style="width: 550px;height:500px;" class="cd-timeline-content">
     </div>
-    <div id="sharePie" style="width: 500px;height:300px;" class="cd-timeline-content">
+    <div id="sharePie" style="width: 550px;height:500px;" class="cd-timeline-content">
     </div>
 </section> <!-- cd-timeline -->
 
@@ -91,7 +91,7 @@ setInterval(function () {
             data: data
         }]
     });
-}, 1000);
+}, 500);
 
 var feeRevenueChart = echarts.init(document.getElementById('FeeRevenue'));
 feeRevenueChart.setOption(option);
