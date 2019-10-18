@@ -35,6 +35,13 @@
       </div> <!-- .cd-h-timeline__line -->
     </div> <!-- .cd-h-timeline__dates -->
 
+    <div class="row">
+      <div id="brd-div" class="text-div"  style="display:block;float:right">
+
+        <a  onclick="ckibrd()" >BRD-253566</a>
+      </div>
+    </div>
+
     <ul>
       <li><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--prev cd-h-timeline__navigation--inactive">Prev</a></li>
       <li><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--next">Next</a></li>
@@ -65,12 +72,6 @@
                                        data-val-required="tech-requirement is required">
               </div>
 
-              <div class="row">
-                <div id="brd-div1" class="text-div"  style="display:block">
-                  <br> BRD: </br>
-                  <a href="http://127.0.0.1:5000/brddetailp.html">BRD-253566</a>
-                </div>
-              </div>
 
               <div class="row">
                 <div id="text-div1" class="text-div"  style="display:none">
@@ -173,6 +174,10 @@
 
                     if(document.getElementById("left-time1").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time1").style.color = "Red"
+                    }
+
+                    function ckibrd(){
+                        window.open('brddetail-readonly.html', '_blank', 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no,alwaysRaised=yes,z-look=yes')
                     }
                 </script>
             </div>
