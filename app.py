@@ -239,5 +239,5 @@ def get_parsed_approver_items():
 
 if __name__ == '__main__':
     # app.run(host, port, debug, options)
-    # 默认值：host=127.0.0.1, port=5000, debug=false
+    # 默认值：host=0.0.0.0, port=5000, debug=false
     app.run(debug=True)

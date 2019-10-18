@@ -13,14 +13,14 @@ function onBRDPageApproveButtonClicked() {
             }
         }
     );
-    window.location.href = 'http://127.0.0.1:5000/brddetailn.html';
+    window.location.href = 'http://0.0.0.0:5000/brddetailn.html';
 }
 
 function onBRDPageNextButtonClicked() {
-	window.location.href = 'http://127.0.0.1:5000/timeline.html';
+	window.location.href = 'http://0.0.0.0:5000/timeline.html';
 }
 
 function onBRDPagePreviousButtonClicked() {
-	window.location.href = 'http://127.0.0.1:5000/update.html';
+	window.location.href = 'http://0.0.0.0:5000/update.html';
 }
 
