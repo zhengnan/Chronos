@@ -18,7 +18,7 @@ function onBRDPageApproveButtonClicked() {
 
 function sendMail(subject, message){
     var data_js = {};
-    data_js['from'] = 'wenfenz@amazon.com';
+    data_js['from'] = 'fba-fee-execution@amazon.com';
     data_js['to'] = 'nanzhen@amazon.com';
     data_js['subject'] = subject;
     data_js['text'] = message;
