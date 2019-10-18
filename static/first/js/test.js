@@ -181,7 +181,7 @@ function show() {
     });
 
   $('#send_update_approve').click(function(){
-    window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
+    window.location.href = 'brddetailp.html';
   });
 
     $('#send_approve').click(function(){
@@ -216,8 +216,8 @@ function show() {
 
         console.log(JSON.stringify(total_json));
         var subject = '[chronos] ' + feetype + " Launch";
-        var content = 'http://127.0.0.1:5000/brddetailp.html';
-        sendMail(subject,content);
+        var content = 'http://0.0.0.0:5000/brddetailp.html';
+//        sendMail(subject,content);
         $.ajax({
            url: '/first',
            type: 'GET',
@@ -227,7 +227,7 @@ function show() {
          }
        });
        sleep(1000);
-       window.location.href = 'http://127.0.0.1:5000/brddetailp.html';
+       window.location.href = 'brddetailp.html';
 
 
     });
