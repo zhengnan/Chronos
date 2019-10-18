@@ -168,6 +168,12 @@
 
                     if(document.getElementById("left-time1").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time1").style.color = "Red"
+
+                        subject = '[chronos] PM, your program is at risk ';
+                        message = {{ remaindate1 }} + '.  See timeline details at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/timeline.html';
+                        sendMail(subject, message);
+
+                        alert("Phase 'Requirement Validation' is at risk! An E-mail has been sent to PM.")
                     }
 
                     function ckibrd(){
@@ -416,24 +422,25 @@
                     if(document.getElementById("left-time3").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time3").style.color = "Red"
                     }
+
                     function urge(){
+                        subject = '[chronos] NOTICE - Dev task is at risk';
+                        message = 'See timeline details at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/devtimeline.html';
+                        sendMail(subject, message);
+
                         alert("Email Sent to Dev Team!")
-                        var data_js = {
-                             // send to nanzhen@amazon.com
-                             //"access_token": "3cbfz3355dtxvqcek519lbvn"
-                             // // send to jzzhangz@amazon.com:
-                            //"access_token": "9bqpegx5ms55kyyqcijxh775",
-                        };
+                    }
+
+                    function sendMail(subject, message){
+                        var data_js = {};
                         data_js['from'] = 'wenfenz@amazon.com';
                         data_js['to'] = 'nanzhen@amazon.com';
-                        data_js['subject'] = '[chronos] NOTICE - Dev task is at risk';
-                        data_js['text'] = 'See details in timeline at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/devtimeline.html';
+                        data_js['subject'] = subject;
+                        data_js['text'] = message;
 
                         var params = toParams(data_js);
 
                         var request = new XMLHttpRequest();
-
-                        //request.open("POST", "https://postmail.invotes.com/send", true);
                         request.open("GET", "sendmail.html?" + params, true);
                         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
