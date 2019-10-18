@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -61,7 +61,7 @@ h1, h2 h3 {
   font-weight: bold;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Modules - reusable parts of our design
 
@@ -80,9 +80,9 @@ Modules - reusable parts of our design
   clear: both;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 header {
@@ -106,13 +106,16 @@ header h1 {
     width: 75%;
     float: left;
 }
-.topBanner-approvers{
+.topBanner-approvers {
     width: 25%;
     float: right;
     color: #ffffff;
     height: 200px;
     line-height: initial;
 <!--    border-left-style: dotted; -->
+}
+#topRightPadding {
+	height: 4em;
 }
 
 #approverListTitle {
@@ -141,14 +144,6 @@ header h1 {
 
 .clearFloat {
   clear: both;
-}
-
-
-.approveButton {
-  width: 200px;
-  height: 50px;
-  font-size: x-large;
-  font-weight: bold;
 }
 
 
@@ -184,7 +179,7 @@ footer h3 {
   }
 }
 
-footer .next-button {
+footer input[type="button"] {
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -195,26 +190,22 @@ footer .next-button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  position: relative;
-  float: right;
   top: 15px;
 }
 
+footer .next-button {
+  position: relative;
+  float: right;
+}
+
 footer .previous-button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
   position: relative;
   float: left;
-  top: 15px;
 }
+
+footer .approveButton {
+}
+
 
 #cd-timeline {
   position: relative;
