@@ -356,11 +356,11 @@ function show() {
 
     var data_js = {
         // send to nanzhen@amazon.com
-//        "access_token": "3cbfz3355dtxvqcek519lbvn"
+        "access_token": "3cbfz3355dtxvqcek519lbvn"
         // // send to wenfenz@amazon.com:
         // "access_token": "pxj48f5s4o4crtmd0r13oaxi",
         // // send to jzzhangz@amazon.com:
-        "access_token": "9bqpegx5ms55kyyqcijxh775",
+        //"access_token": "9bqpegx5ms55kyyqcijxh775",
     };
     data_js['subject'] = subject;
     data_js['text'] = message;
