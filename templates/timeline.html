@@ -169,7 +169,7 @@
                     if(document.getElementById("left-time1").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time1").style.color = "Red"
 
-                        subject = '[chronos] PM, your program is at risk ';
+                        subject = '[chronos] Hi PM, your program is at risk ';
                         message = {{ remaindate1 }} + '.  See timeline details at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/timeline.html';
                         sendMail(subject, message);
 
@@ -424,7 +424,7 @@
                     }
 
                     function urge(){
-                        subject = '[chronos] NOTICE - Dev task is at risk';
+                        subject = '[chronos] NOTICE - Hi Dev, your task is at risk';
                         message = 'See timeline details at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/devtimeline.html';
                         sendMail(subject, message);
 

@@ -226,7 +226,7 @@ function show() {
        });
        sleep(1000);
 
-        var subject = '[chronos] ' + feetype + " Launch";
+        var subject = '[chronos] A fee program launch on ' + feetype + " needs your approval";
         var content = 'http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/brddetailn.html';
         sendMail(subject,content);
 

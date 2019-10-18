@@ -34,8 +34,8 @@ function sendMail(subject, message){
 
 
 function onBRDPageNextButtonClicked() {
-	var subject = '[chronos] NOTICE - Dev task starts';
-	var content = 'See details at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/devtimeline.html';
+	var subject = '[chronos] NOTICE - Hi Dev, your task started just now';
+	var content = 'See timeline details at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/devtimeline.html';
 	sendMail(subject, content);
 
 	window.location.href = 'timeline.html';
