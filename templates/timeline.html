@@ -420,18 +420,21 @@
                         alert("Email Sent to Dev Team!")
                         var data_js = {
                              // send to nanzhen@amazon.com
-                             "access_token": "3cbfz3355dtxvqcek519lbvn"
+                             //"access_token": "3cbfz3355dtxvqcek519lbvn"
                              // // send to jzzhangz@amazon.com:
                             //"access_token": "9bqpegx5ms55kyyqcijxh775",
                         };
-                        data_js['subject'] = '[chronos] Fee Launch';
-                        data_js['text'] = 'http://0.0.0.0:5000/devtimeline.html';
+                        data_js['from'] = 'wenfenz@amazon.com';
+                        data_js['to'] = 'nanzhen@amazon.com';
+                        data_js['subject'] = '[chronos] NOTICE - Dev task is at risk';
+                        data_js['text'] = 'See details in timeline at http://0.0.0.0:5000/devtimeline.html';
 
                         var params = toParams(data_js);
 
                         var request = new XMLHttpRequest();
 
-                        request.open("POST", "https://postmail.invotes.com/send", true);
+                        //request.open("POST", "https://postmail.invotes.com/send", true);
+                        request.open("GET", "http://0.0.0.0:5000/sendmail.html?" + params, true);
                         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
                         request.send(params);
