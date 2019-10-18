@@ -5,6 +5,7 @@ from flask import Flask, url_for, render_template, request, redirect
 from werkzeug.datastructures import ImmutableMultiDict
 import datetime
 import time
+import smtplib
 
 app = Flask(__name__)
 
@@ -159,6 +160,24 @@ def markDonePhase3():
 @app.route('/markdone-phase4', methods=['POST', 'GET'])
 def markDonePhase4():
     return markOnePhaseDone('P4')
+
+@app.route('/sendmail.html')
+def send_mail():
+    para = request.args
+    print("params: ", para)
+    mailFrom = para['from']
+    mailTo = para['to']
+    mailSubject = para['subject']
+    mailBody = para['text']
+
+    print("    To send mail for:")
+    print("    from: ", mailFrom)
+    print("    to: ", mailTo)
+    print("    subject: ", mailSubject)
+    print("    body: ", mailBody)
+    s = smtplib.SMTP("localhost")
+    s.sendmail(mailFrom, mailTo, mailSubject+'\r\n'+mailBody)
+    return 'OK'
 
 @app.route('/start.html')
 def start():
