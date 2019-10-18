@@ -166,7 +166,7 @@ function show() {
 
 
      var split_Time = splitTime(startTime,endTime,4);
-     var rowdata = ["Validation Reguriment", "Development", "Test", "Deployment"];
+     var rowdata = ["Validation Requriment", "Development", "Test", "Deployment"];
 
      var div1=document.getElementById('div_eta_table')
      var tab='<table id="eta_table" border=1 width=500">'
