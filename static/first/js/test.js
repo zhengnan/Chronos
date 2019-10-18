@@ -215,9 +215,7 @@ function show() {
         total_json.profitability2=profitability2;
 
         console.log(JSON.stringify(total_json));
-        var subject = '[chronos] ' + feetype + " Launch";
-        var content = 'http://0.0.0.0:5000/brddetailp.html';
-//        sendMail(subject,content);
+
         $.ajax({
            url: '/first',
            type: 'GET',
@@ -227,6 +225,11 @@ function show() {
          }
        });
        sleep(1000);
+
+        var subject = '[chronos] ' + feetype + " Launch";
+        var content = 'http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/brddetailn.html';
+        sendMail(subject,content);
+
        window.location.href = 'brddetailp.html';
 
 
@@ -380,7 +383,7 @@ function show() {
     };
     */
     //request.open("POST", "https://postmail.invotes.com/send", true);
-    request.open("GET", "http://0.0.0.0:5000/sendmail.html?" + params, true);
+    request.open("GET", "sendmail.html?" + params, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     request.send(params);
