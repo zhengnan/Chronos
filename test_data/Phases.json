@@ -1,6 +1,1 @@
-{
-	"P1": "Done",
-	"P2": "InProgress",
-	"P3": "NotStarted",
-	"P4": "NotStarted"
-}
+{"P1": "InProgress", "P2": "NotStarted", "P3": "NotStarted", "P4": "NotStarted"}

@@ -107,6 +107,20 @@
               <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
               <script type="text/javascript" src="static/assets/js/mawbutton.js"></script>
               <script type="text/javascript">
+                function tellServerOnePhaseIsDone(phaseNum) {
+                    $.ajax(
+                        {
+                            type: 'GET',
+                            url: '/markdone-phase' + phaseNum,
+                            data: {},
+                            dataType: "json",
+                            success: function(data) {
+                            }
+                        }
+                    );
+                }
+              </script>
+              <script type="text/javascript">
                     $('button').mawbutton({
                         speed : 300,
                         scale : 6,
@@ -116,6 +130,8 @@
                         }
                     });
                     function ckidone(){
+                        tellServerOnePhaseIsDone('1');
+
                         document.getElementById("left-time1").style.display='none';
                         document.getElementById("done-1").style.display='block';
                         document.getElementById("redo-div").style.display='block';
@@ -289,6 +305,8 @@
                         }
                     });
                     function ckidone2(){
+                        tellServerOnePhaseIsDone('2');
+
                         document.getElementById("left-time2").style.display='none';
                         document.getElementById("done-2").style.display='block';
                         document.getElementById("redo-div-2").style.display='block';
@@ -420,6 +438,8 @@
                         }
                     });
                     function ckidone3(){
+                        tellServerOnePhaseIsDone('3');
+
                         document.getElementById("left-time3").style.display='none';
                         document.getElementById("done-3").style.display='block';
                         document.getElementById("next-div3").style.display='block';
@@ -536,6 +556,8 @@
                         }
                     });
                     function ckidone4(){
+                        tellServerOnePhaseIsDone('4');
+
                         document.getElementById("left-time4").style.display='none';
                         document.getElementById("done-4").style.display='block';
                         document.getElementById("redo-div4").style.display='block';

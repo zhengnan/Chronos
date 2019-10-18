@@ -128,7 +128,29 @@ def approve():
     persistData = load_approve_data()
     persistData[approver] = statusObj
     dump_approve_data(persistData)
+    return 'OK'
 
+@app.route('/markdone-phase1', methods=['POST', 'GET'])
+def markDonePhase1():
+    return markOnePhaseDone('P1')
+
+def markOnePhaseDone(phaseName):
+    persistData = load_phase_data()
+    persistData[phaseName] = 'Done'
+    dump_phase_data(persistData)
+    return 'OK'
+
+@app.route('/markdone-phase2', methods=['POST', 'GET'])
+def markDonePhase2():
+    return markOnePhaseDone('P2')
+
+@app.route('/markdone-phase3', methods=['POST', 'GET'])
+def markDonePhase3():
+    return markOnePhaseDone('P3')
+
+@app.route('/markdone-phase4', methods=['POST', 'GET'])
+def markDonePhase4():
+    return markOnePhaseDone('P4')
 
 @app.route('/start.html')
 def start():
@@ -168,13 +190,13 @@ def dump_approve_data(data):
 def load_phase_data():
     data = {}
     with open(os.path.join(TEST_DATA_PATH, 'Phases.json'), 'r') as f:
-        # print('In load_phase_data(). f: ', f)
         data = json.load(f)
-        print("phase data: ", data)
+        # print("phase data: ", data)
     return data
 
 def dump_phase_data(data):
     with open(os.path.join(TEST_DATA_PATH, 'Phases.json'), 'w') as f:
+        print("phase data to write: ", data)
         json.dump(data, f)
 
 def cal_remain_days(end_date):
