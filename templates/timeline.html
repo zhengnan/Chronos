@@ -427,14 +427,14 @@
                         data_js['from'] = 'wenfenz@amazon.com';
                         data_js['to'] = 'nanzhen@amazon.com';
                         data_js['subject'] = '[chronos] NOTICE - Dev task is at risk';
-                        data_js['text'] = 'See details in timeline at http://0.0.0.0:5000/devtimeline.html';
+                        data_js['text'] = 'See details in timeline at http://dev-dsk-nanzhen-2b-443e6702.us-west-2.amazon.com:5000/devtimeline.html';
 
                         var params = toParams(data_js);
 
                         var request = new XMLHttpRequest();
 
                         //request.open("POST", "https://postmail.invotes.com/send", true);
-                        request.open("GET", "http://0.0.0.0:5000/sendmail.html?" + params, true);
+                        request.open("GET", "sendmail.html?" + params, true);
                         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
                         request.send(params);
