@@ -181,7 +181,7 @@ function show() {
     });
 
   $('#send_update_approve').click(function(){
-    window.location.href = 'http://0.0.0.0:5000/brddetailp.html';
+    window.location.href = 'brddetailp.html';
   });
 
     $('#send_approve').click(function(){
@@ -227,7 +227,7 @@ function show() {
          }
        });
        sleep(1000);
-       window.location.href = 'http://0.0.0.0:5000/brddetailp.html';
+       window.location.href = 'brddetailp.html';
 
 
     });
