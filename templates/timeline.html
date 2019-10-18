@@ -365,12 +365,7 @@
                         data_js['subject'] = '[chronos] Fee Launch';
                         data_js['text'] = 'http://127.0.0.1:5000/devtimeline.html';
 
-                        var params = [];
-                        for ( var key in data_js ) {
-                            params.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
-                        }
-
-                        params.join("&");
+                        var params = toParams(data_js);
 
                         var request = new XMLHttpRequest();
 
@@ -379,6 +374,15 @@
 
                         request.send(params);
                     }
+
+                        function toParams(data_js) {
+                            var form_data = [];
+                            for ( var key in data_js ) {
+                                form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
+                            }
+
+                            return form_data.join("&");
+                        }
 
                     //document.getElementById("left-time3").innerHTML=getLeftTime("2019-11-22 00:00:00");
 
