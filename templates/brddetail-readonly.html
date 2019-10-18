@@ -97,7 +97,6 @@
 		</div> <!-- cd-timeline-block -->
 
         </div>
-		<input type="button" onclick="window.opener = null; window.open('', '_self'); window.close();" value="Close" />
 	</section> <!-- cd-timeline -->
 
     <script src="static/BRDDetails/support/js/jquery.js"></script>
@@ -113,7 +112,7 @@
         "authorUrl": "www.amazon.com",
         "name": "nanzhen"
       };
-      window.sideComments = new SideComments('#commentable-container', currentUser, nothing);
+      window.sideComments = new SideComments('#commentable-container', currentUser, twoComments);
       window.sideComments.on('commentPosted', function( comment ) {
         $.ajax({
             url: '/comments',
