@@ -53,8 +53,8 @@
       <li class="cd-h-timeline__event cd-h-timeline__event--selected text-component">
         <div class="cd-h-timeline__event-content container">
           <h3 class="cd-h-timeline__event-title">Requirement Validation</h3>
-          <span id="left-time1" style="float:right;color:blue;display:none">{{ remaindate1 }}</span>
-          <span id="done-1" style="float:right;color:green;display:block">Done</span>
+          <span id="left-time1" style="float:right;color:blue;display:block">{{ remaindate1 }}</span>
+          <span id="done-1" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date1 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
             Make clear of the business requirements form BRD. List the all dependencies from other teams into below form.
@@ -73,6 +73,16 @@
                   <br> Technology SIM: </br>
                   <a href="https://issues.amazon.com/issues/FeeIntake-13">FeeIntake-13</a>
                 </div>
+              </div>
+
+              <div class="row">
+                <div id="test-1" class="text-div"  style="display:block;color:red">
+                  <br> Validation: Not Start</br>
+                </div>
+
+              </div>
+              <div id="urge-div1" align="center" style="position:relative;top:0px;height: 200px;display:block;float:left">
+                <button class="blue" onclick="urge()">Urge</button>
               </div>
 
 
@@ -143,6 +153,18 @@
                         return strtime;
                     }
                     //document.getElementById("left-time1").innerHTML = getLeftTime("2019-10-27 00:00:00");
+                    if(document.getElementById("left-time1").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time1").style.color = "Green"
+                       document.getElementById("text-div1").style.display='block';
+                       document.getElementById("text-div2").style.display='block';
+                       document.getElementById("test-1").style.display='none';
+                       document.getElementById("urge-div1").style.display='none';
+                    }else{
+                       document.getElementById("text-div1").style.display='none';
+                       document.getElementById("text-div2").style.display='none';
+                       document.getElementById("test-1").style.display='block';
+                       document.getElementById("urge-div1").style.display='block';
+                    }
 
                     if(document.getElementById("left-time1").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time1").style.color = "Red"
@@ -161,8 +183,8 @@
       <li class="cd-h-timeline__event text-component">
         <div class="cd-h-timeline__event-content container">
           <h2 class="cd-h-timeline__event-title">Developing</h2>
-          <span id="left-time2" style="float:right;color:blue;display:none">{{ remaindate2 }}</span>
-          <span id="done-2" style="float:right;color:green;display:block">Done</span>
+          <span id="left-time2" style="float:right;color:blue;display:block">{{ remaindate2 }}</span>
+          <span id="done-2" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date2 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
             Fee project developing phase, developer need to complete each part listed below if needed. Update each step process, and feel free to complete it if CR is reviewed.
@@ -175,26 +197,17 @@
                 <div id="datakey-text" class="text-div"  style="display:block">
                   <br> Data Key Change Step: Done</br>
                 </div>
-                <div id="datakey-result" class="col-md-6 col-md-offset-3" style="display:none">
-                  <label>Data Key Change Step </label> : <span data-bind="text: Name"></span>
-                </div>
               </div>
 
               <div class="row">
                 <div id="rate-text" class="text-div"  style="display:block">
                   <br> Fee Rate Change Step: Done</br>
                 </div>
-                <div id="rate-result" class="col-md-6 col-md-offset-3" style="display:none">
-                  <label>Fee Rate Change Step - </label> : <span data-bind="text: Name"></span>
-                </div>
               </div>
 
               <div class="row">
                 <div id="test-text" class="text-div"  style="display:block">
                   <br> Rate Unit Test Step: Done</br>
-                </div>
-                <div id="test-result" class="col-md-6 col-md-offset-3" style="display:none">
-                  <label>Rate Unit Test Step</label> : <span data-bind="text: Name"></span>
                 </div>
               </div>
 
@@ -203,9 +216,16 @@
                   <br> CR: </br>
                   <a href="https://code.amazon.com/reviews/CR-8786081">CR-8786081</a>
                 </div>
-                <div id="cr-result" class="col-md-6 col-md-offset-3" style="display:none">
-                  <label>CR</label> : <span data-bind="text: Name"></span>
+              </div>
+
+              <div class="row">
+                <div id="test-2" class="text-div"  style="display:block;color:red">
+                  <br> Develop: Not Start</br>
                 </div>
+
+              </div>
+              <div id="urge-div2" align="center" style="position:relative;top:0px;height: 200px;display:block;float:left">
+                <button class="blue" onclick="urge()">Urge</button>
               </div>
 
 
@@ -280,6 +300,26 @@
                     function ckinext2(){
                         document.getElementById("date-point-3").click();
                     }
+                    if(document.getElementById("left-time2").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time2").style.color = "Green"
+                    }
+                    if(document.getElementById("left-time2").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time2").style.color = "Green"
+                       document.getElementById("datakey-text").style.display='block';
+                       document.getElementById("rate-text").style.display='block';
+                       document.getElementById("test-text").style.display='block';
+                       document.getElementById("cr-text").style.display='block';
+                       document.getElementById("test-2").style.display='none';
+                       document.getElementById("urge-div2").style.display='none';
+                    }else{
+                       document.getElementById("datakey-text").style.display='none';
+                       document.getElementById("rate-text").style.display='none';
+                       document.getElementById("test-text").style.display='none';
+                       document.getElementById("cr-text").style.display='none';
+                       document.getElementById("test-2").style.display='block';
+                       document.getElementById("urge-div2").style.display='block';
+                    }
+
                     if(document.getElementById("left-time2").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time2").style.color = "Red"
                     }
@@ -294,7 +334,7 @@
       <li class="cd-h-timeline__event text-component">
         <div class="cd-h-timeline__event-content container">
           <h2 class="cd-h-timeline__event-title">Integration Test</h2>
-          <span id="left-time3" style="float:right;color:red">{{ remaindate3 }}</span>
+          <span id="left-time3" style="float:right;color:blue">{{ remaindate3 }}</span>
           <span id="done-3" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date3 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
@@ -302,6 +342,13 @@
           </p>
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
+              <div class="row">
+                <div id="text-3" class="text-div"  style="display:block;color:green">
+                  <br> Run Integration Unit Test: Done</br>
+                </div>
+
+              </div>
+
               <div class="row">
                 <div id="test-3" class="text-div"  style="display:block;color:red">
                   <br> Run Integration Unit Test: Not Start</br>
@@ -355,11 +402,22 @@
                         document.getElementById("test-div-s").style.display='block';
                     }
 
+                    if(document.getElementById("left-time3").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time3").style.color = "Green"
+                       document.getElementById("text-3").style.display='block';
+                       document.getElementById("test-3").style.display='none';
+                       document.getElementById("urge-div3").style.display='none';
+                    }else{
+                       document.getElementById("text-3").style.display='none';
+                       document.getElementById("test-3").style.display='block';
+                       document.getElementById("urge-div3").style.display='block';
+                    }
+
                     if(document.getElementById("left-time3").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time3").style.color = "Red"
                     }
                     function urge(){
-<!--                       alert("Email Sent to Dev Team!")-->
+                        alert("Email Sent to Dev Team!")
                         var data_js = {
                              // send to nanzhen@amazon.com
                              "access_token": "3cbfz3355dtxvqcek519lbvn"
@@ -399,7 +457,7 @@
       <li class="cd-h-timeline__event text-component">
         <div class="cd-h-timeline__event-content container">
           <h2 class="cd-h-timeline__event-title">Deployment</h2>
-          <span id="left-time4" style="float:right;color:blue">{{ remaindate4}}</span>
+          <span id="left-time4" style="float:right;color:blue">{{ remaindate4 }}</span>
           <span id="done-4" style="float:right;color:green;display:none">Done</span>
           <em class="cd-h-timeline__event-date">ETA: {{ date4 }}</em>
           <p class="cd-h-timeline__event-description color-contrast-medium">
@@ -409,7 +467,12 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
 
+              <div class="row">
+                <div id="test-4" class="text-div"  style="display:block;color:green">
+                  <br> MCM Process: Done</br>
+                </div>
 
+              </div>
 
 
               <div class="row">
@@ -424,7 +487,7 @@
               </div>
 
               <div id="done-div4" align="center" style="position:relative;top:0px;height: 200px;display:block;float:right">
-                <button class="blue"  onclick="location.href='http://127.0.0.1:5000/dashboard.html'">Done</button>
+                <button class="blue"  onclick="location.href='http://127.0.0.1:5000/dashboard.html'">Finish</button>
               </div>
 
               <script type="text/javascript" src="static/assets/js/vendor/jquery.js"></script>
@@ -469,6 +532,18 @@
                         document.getElementById("mcm-result").style.display='none';
                         document.getElementById("mcm-text").style.display='none';
                     }
+
+                    if(document.getElementById("left-time4").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time4").style.color = "Green"
+                       document.getElementById("test-4").style.display='block';
+                       document.getElementById("mcm-4").style.display='none';
+                       document.getElementById("urge-div4").style.display='none';
+                    }else{
+                       document.getElementById("test-4").style.display='none';
+                       document.getElementById("mcm-4").style.display='block';
+                       document.getElementById("urge-div4").style.display='block';
+                    }
+
                     if(document.getElementById("left-time4").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time4").style.color = "Red"
                     }

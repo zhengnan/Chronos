@@ -101,22 +101,30 @@ def render_timeline_page(html_file):
     date_3 = data.get('eta')[2][1].replace(" ","")
     date_4 = data.get('eta')[3][1].replace(" ","")
 
+    phaseStatusData = load_phase_data()
+
+    status1 = "Done" if 'Done'==phaseStatusData['P1'] else cal_remain_days(date_1)
+    status2 = "Done" if 'Done'==phaseStatusData['P2'] else cal_remain_days(date_2)
+    status3 = "Done" if 'Done'==phaseStatusData['P3'] else cal_remain_days(date_3)
+    status4 = "Done" if 'Done'==phaseStatusData['P4'] else cal_remain_days(date_4)
+
+
+
     return render_template(html_file
                            , date1=date_1
                            , date2=date_2
                            , date3=date_3
                            , date4=date_4
-                           , remaindate1=cal_remain_days(date_1)
-                           , remaindate2=cal_remain_days(date_2)
-                           , remaindate3=cal_remain_days(date_3)
-                           , remaindate4=cal_remain_days(date_4)
+                           , remaindate1=status1
+                           , remaindate2=status2
+                           , remaindate3=status3
+                           , remaindate4=status4
                            )
 
 
 @app.route('/devtimeline.html')
 def devtimeline():
     return render_timeline_page('devtimeline.html')
-
 @app.route('/approve', methods=['POST', 'GET'])
 def approve():
     approver = 'Zheng, Nan'

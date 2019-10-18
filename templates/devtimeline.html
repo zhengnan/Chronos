@@ -192,6 +192,11 @@
                        document.getElementById("left-time1").style.color = "Red"
                     }
 
+                    if(document.getElementById("left-time1").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time1").style.color = "Green"
+                       ckidone()
+                    }
+
                     function ckibrd(){
                         window.open('brddetail-readonly.html', '_blank', 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no,alwaysRaised=yes,z-look=yes')
                     }
@@ -368,6 +373,11 @@
                     if(document.getElementById("left-time2").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time2").style.color = "Red"
                     }
+
+                    if(document.getElementById("left-time2").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time2").style.color = "Green"
+                       ckidone2()
+                    }
                     //document.getElementById("left-time2").innerHTML=getLeftTime("2019-11-05 00:00:00");
 
                 </script>
@@ -466,6 +476,11 @@
 
                     function runtest(){
                         document.getElementById("test-div-s").style.display='block';
+                    }
+
+                    if(document.getElementById("left-time3").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time3").style.color = "Green"
+                       ckidone3()
                     }
 
                     if(document.getElementById("left-time3").innerHTML.search("Risk") != -1){
@@ -592,6 +607,10 @@
                     }
                     if(document.getElementById("left-time4").innerHTML.search("Risk") != -1){
                        document.getElementById("left-time4").style.color = "Red"
+                    }
+                    if(document.getElementById("left-time4").innerHTML.search("Done") != -1){
+                       document.getElementById("left-time4").style.color = "Green"
+                       ckidone4()
                     }
                     //document.getElementById("left-time4").innerHTML=getLeftTime("2019-11-30 00:00:00");
 
