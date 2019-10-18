@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="static/BRDDetails/index.css" />
+        <link rel="stylesheet" href="static/BRDDetails/release/side-comments.css" />
+        <link rel="stylesheet" href="static/BRDDetails/release/themes/default-theme.css" />
+        <link rel="stylesheet" href="static/BRDDetails/support/css/basics.css" />
+    </head>
+    <body>
+	<header class="topBanner">
+		<div class="topBanner-title">
+			<h1>BRD Detail Information</h1>
+		</div>
+		<div class="topBanner-approvers">
+			<div id="topRightPadding"> &nbsp; </div>
+			<ul id="approverList">
+				<li class="listTitle">Approvers</li>
+				{% for approveItem in approveItems %}
+				<li class="approver"> <span class="name">{{approveItem.approver}}</span> &nbsp; (<span class="{{approveItem.cssClass}}">{{approveItem.status}}</span>) </li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class=clearFloat"></div>
+	</header>
+
+	<section id="cd-timeline" class="cd-container">
+		<div id="commentable-container" class="container commentable-container">
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-picture">
+				</div> <!-- cd-timeline-img -->
+				<div class="cd-timeline-content">
+					<h2>Description</h2>
+					<p data-section-id="002" class="commentable-section">{{ section1 }}</p>
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>Rate</h2>
+				<table id="rate_table" border="1">
+					<tr>
+						{% for title in rateTitle %}
+						<th>{{title}}</th>
+						{% endfor %}
+					</tr>
+
+					{% for raterow in section2 %}
+					<tr>
+						{% for rateitem in raterow %}
+						<td>{{rateitem}}</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</table>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>Profitability</h2>
+				<p data-section-id="003" class="commentable-section">Incremental GMS: {{ section3 }}</p>
+				<p>Incremental Fee Revenue: {{ section3 }}</p>
+				<p>Incremental Operating Profit: {{ section3 }}</p>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-picture">
+				</div> <!-- cd-timeline-img -->
+				<div class="cd-timeline-content">
+					<h2>ETA</h2>
+                    <p data-section-id="004" class="commentable-section">{{ section4 }}</p>
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>Timeline</h2>
+				<table id="eta_table" border="1">
+					{% for trrow in section5 %}
+					<tr>
+						{% for tditem in trrow %}
+						<td>{{tditem}}</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</table>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+        </div>
+	</section> <!-- cd-timeline -->
+
+    <script src="static/BRDDetails/support/js/jquery.js"></script>
+    <script src="static/BRDDetails/release/side-comments.js"></script>
+    <script src="static/BRDDetails/support/test_data.js"></script>
+    <script src="static/common.js"></script>
+    <script>
+    $(document).ready(function(){
+      var SideComments = require('side-comments');
+      var currentUser = {
+        "id": 2,
+        "avatarUrl": "static/img/user.png",
+        "authorUrl": "www.amazon.com",
+        "name": "nanzhen"
+      };
+      window.sideComments = new SideComments('#commentable-container', currentUser, nothing);
+      window.sideComments.on('commentPosted', function( comment ) {
+        $.ajax({
+            url: '/comments',
+            type: 'GET',
+            data: comment,
+            success: function( comment ) {
+            }
+        });
+      comment.id = parseInt(Math.random() * (100000 - 1) + 1);
+      sideComments.insertComment(comment);
+      });
+      window.sideComments.on('commentDeleted', function( comment ) {
+        sideComments.removeComment(comment.sectionId, comment.id);
+      });
+    });
+  </script>
+</body>
+</html>
