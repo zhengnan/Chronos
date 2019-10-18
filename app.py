@@ -92,13 +92,16 @@ def update():
 
 @app.route('/timeline.html')
 def timeline():
+    return render_timeline_page('timeline.html')
+
+def render_timeline_page(html_file):
     data = load_test_data()
     date_1 = data.get('eta')[0][1].replace(" ","")
     date_2 = data.get('eta')[1][1].replace(" ","")
     date_3 = data.get('eta')[2][1].replace(" ","")
     date_4 = data.get('eta')[3][1].replace(" ","")
 
-    return render_template('timeline.html'
+    return render_template(html_file
                            , date1=date_1
                            , date2=date_2
                            , date3=date_3
@@ -108,25 +111,11 @@ def timeline():
                            , remaindate3=cal_remain_days(date_3)
                            , remaindate4=cal_remain_days(date_4)
                            )
+
 
 @app.route('/devtimeline.html')
 def devtimeline():
-    data = load_test_data()
-    date_1 = data.get('eta')[0][1].replace(" ","")
-    date_2 = data.get('eta')[1][1].replace(" ","")
-    date_3 = data.get('eta')[2][1].replace(" ","")
-    date_4 = data.get('eta')[3][1].replace(" ","")
-
-    return render_template('devtimeline.html'
-                           , date1=date_1
-                           , date2=date_2
-                           , date3=date_3
-                           , date4=date_4
-                           , remaindate1=cal_remain_days(date_1)
-                           , remaindate2=cal_remain_days(date_2)
-                           , remaindate3=cal_remain_days(date_3)
-                           , remaindate4=cal_remain_days(date_4)
-                           )
+    return render_timeline_page('devtimeline.html')
 
 @app.route('/approve', methods=['POST', 'GET'])
 def approve():
@@ -168,12 +157,24 @@ def dump_test_data(data):
 def load_approve_data():
     data = {}
     with open(os.path.join(TEST_DATA_PATH, 'Reviewers.json'), 'r') as f:
-        print('In load_approve_data(). f: ', f)
+        # print('In load_approve_data(). f: ', f)
         data = json.load(f)
     return data
 
 def dump_approve_data(data):
     with open(os.path.join(TEST_DATA_PATH, 'Reviewers.json'), 'w') as f:
+        json.dump(data, f)
+
+def load_phase_data():
+    data = {}
+    with open(os.path.join(TEST_DATA_PATH, 'Phases.json'), 'r') as f:
+        # print('In load_phase_data(). f: ', f)
+        data = json.load(f)
+        print("phase data: ", data)
+    return data
+
+def dump_phase_data(data):
+    with open(os.path.join(TEST_DATA_PATH, 'Phases.json'), 'w') as f:
         json.dump(data, f)
 
 def cal_remain_days(end_date):
