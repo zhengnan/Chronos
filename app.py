@@ -22,10 +22,10 @@ def brdp_detail():
     section2 = data.get('rate')
     rateTitle = data.get('rateTitle')
     section3 = data.get('profitability')
-    section4 = data.get('eta')
-    section5 = data.get('profitability1')
-    section6 = data.get('profitability2')
-    section7 = data.get('etaTime')
+    section4 = data.get('etaTime')
+    section5 = data.get('eta')
+    section6 = data.get('profitability1')
+    section7 = data.get('profitability2')
 
     approveItems = get_parsed_approver_items()
 
@@ -38,12 +38,17 @@ def brdn_detail():
     data = load_test_data()
     section1 = data.get('changeDesc')
     section2 = data.get('rate')
+    rateTitle = data.get('rateTitle')
     section3 = data.get('profitability')
-    section4 = data.get('eta')
+    section4 = data.get('etaTime')
+    section5 = data.get('eta')
+    section6 = data.get('profitability1')
+    section7 = data.get('profitability2')
 
     approveItems = get_parsed_approver_items()
 
-    return render_template('brddetailn.html', section1=section1, section2=section2, section3=section3, section4=section4
+    return render_template('brddetailn.html', section1=section1, rateTitle=rateTitle, section2=section2, section3=section3
+        , section4=section4, section5=section5, section6=section6, section7=section7
         , approveItems=approveItems)
 
 @app.route('/hello', methods=['POST', 'GET'])
