@@ -154,7 +154,7 @@ function show() {
      $('#div_eta_table').empty();
      var myDate = new Date();
 
-     var startTime = dateFormat(myDate);
+     var startTime = myDate.Format("YYYY-MM-DD");
      var endTime = document.getElementById('eta_time_box').value;
 
      var suggestTime = document.getElementById('recommendETA').innerHTML;
@@ -171,7 +171,7 @@ function show() {
      var div1=document.getElementById('div_eta_table')
      var tab='<table id="eta_table" border=1 width=500">'
      for(var i=0;i<4;i++){
-         var nextTime = dateFormat(split_Time[i]);
+         var nextTime = split_Time[i].Format("YYYY-MM-DD");
          tab+='<tr>'
          tab+="<td>"+ rowdata[i] +"</td><td><input type='text' value=' "+nextTime+ " '></input></td>"
          tab+='</tr>'
@@ -217,7 +217,7 @@ function show() {
         console.log(JSON.stringify(total_json));
         var subject = '[chronos] ' + feetype + " Launch";
         var content = 'http://127.0.0.1:5000/brddetailp.html';
-//        sendMail(subject,content);
+        sendMail(subject,content);
         $.ajax({
            url: '/first',
            type: 'GET',
@@ -356,11 +356,11 @@ function show() {
 
     var data_js = {
         // send to nanzhen@amazon.com
-        "access_token": "3cbfz3355dtxvqcek519lbvn"
+//        "access_token": "3cbfz3355dtxvqcek519lbvn"
         // // send to wenfenz@amazon.com:
         // "access_token": "pxj48f5s4o4crtmd0r13oaxi",
         // // send to jzzhangz@amazon.com:
-        //"access_token": "9bqpegx5ms55kyyqcijxh775",
+        "access_token": "9bqpegx5ms55kyyqcijxh775",
     };
     data_js['subject'] = subject;
     data_js['text'] = message;

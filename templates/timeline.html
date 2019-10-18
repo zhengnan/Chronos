@@ -355,7 +355,29 @@
                        document.getElementById("left-time3").style.color = "Red"
                     }
                     function urge(){
-                       alert("Email Sent to Dev Team!")
+<!--                       alert("Email Sent to Dev Team!")-->
+                        var data_js = {
+                             // send to nanzhen@amazon.com
+                             //"access_token": "3cbfz3355dtxvqcek519lbvn"
+                             // // send to jzzhangz@amazon.com:
+                            "access_token": "9bqpegx5ms55kyyqcijxh775",
+                        };
+                        data_js['subject'] = '[chronos] Fee Launch';
+                        data_js['text'] = 'http://127.0.0.1:5000/devtimeline.html';
+
+                        var params = [];
+                        for ( var key in data_js ) {
+                            params.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
+                        }
+
+                        params.join("&");
+
+                        var request = new XMLHttpRequest();
+
+                        request.open("POST", "https://postmail.invotes.com/send", true);
+                        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                        request.send(params);
                     }
 
                     //document.getElementById("left-time3").innerHTML=getLeftTime("2019-11-22 00:00:00");
